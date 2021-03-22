@@ -1,4 +1,4 @@
-# [typelevel][]
+# typelevel
 
 Typelevel programming, singletons and advanced types.
 
