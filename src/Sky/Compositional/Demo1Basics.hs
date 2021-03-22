@@ -17,7 +17,6 @@ import Sky.Compositional.Algebra
 
 -- For monadic demo only
 import Control.Monad.Except (Except, runExcept, throwError, catchError)
-import Control.Monad.Writer.Lazy (Writer, runWriter, tell)
 
 ----------------------------------------------------------------------------------------------------
 
@@ -251,40 +250,3 @@ instance (Val :<: v) => EvalFail Op v where
 --evalFail :: (Traversable f, EvalFail f g) => Term f -> ErrM (Term g)
 evalFail :: ETerm -> ErrM VTerm
 evalFail = cataM evalFailAlg
-
-----------------------------------------------------------------------------------------------------
--- Position annotations
-
-removeR :: (f :*: g) a -> f a
-removeR (a :*: b) = a
-
-stripR :: (Functor f, Functor g) => Term (f :*: g) -> Term f
-stripR = cata (Term . removeR)
-
-liftL :: (Functor f, Functor g) => (Term f -> t) -> (Term (f :*: g) -> t)
-liftL f = f . stripR
-
-data Pos e = Pos String
-
-type LogM a = Writer [String] a
-
-class DesugReport f g where
-    desugReportAlg :: f (Term g) -> LogM (Term g)
-
-instance (DesugReport f v, DesugReport g v) => DesugReport (f :+: g) v where
-    desugReportAlg :: (f :+: g) (Term v) -> LogM (Term v)
-    desugReportAlg (Inl a) = desugReportAlg a
-    desugReportAlg (Inr a) = desugReportAlg a
-
-instance {-# OVERLAPPABLE #-} (g :<: f) => DesugReport g f where
-    desugReportAlg :: g (Term f) -> LogM (Term f)
-    desugReportAlg = return . inject
-
-instance (Val :<: f, Op :<: f) => DesugReport Sug f where
-    desugReportAlg :: Sug (Term f) -> LogM (Term f)
-    desugReportAlg (Neg x) = return $ iConst (-1) `iMult` x
-    desugReportAlg (Swap x) = return $ iPair (iSnd x) (iFst x)
-
---desug :: ETerm' -> ETerm
-desugReport :: ETerm' -> LogM ETerm
-desugReport = cataM desugReportAlg

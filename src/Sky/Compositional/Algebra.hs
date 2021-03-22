@@ -141,7 +141,6 @@ instance (Traversable f, Traversable g) => Traversable (f :*: g) where
     sequenceA :: Applicative x => (f :*: g) (x a) -> x ((f :*: g) a)
     sequenceA (a :*: b) = (:*:) <$> sequenceA a <*> sequenceA b
 
- 
 getL :: (f :*: g) a -> f a
 getL (a :*: b) = a
 
@@ -156,6 +155,18 @@ collectP :: ((f :*: r) :+: (g :*: r)) a -> ((f :+: g) :*: r) a
 collectP (Inl (a :*: r)) = (Inl a) :*: r
 collectP (Inr (b :*: r)) = (Inr b) :*: r
 
+stripR :: (Functor f, Functor g) => Term (f :*: g) -> Term f
+stripR = cata (Term . getL)
+
+stripL :: (Functor f, Functor g) => Term (f :*: g) -> Term g
+stripL = cata (Term . getR)
+
+liftL :: (Functor f, Functor g) => (Term f -> a) -> (Term (f :*: g) -> a)
+liftL alg = alg . stripR
+
+liftR :: (Functor f, Functor g) => (Term g -> a) -> (Term (f :*: g) -> a)
+liftR alg = alg . stripL
+
 ----------------------------------------------------------------------------------------------------
 
 infixr 7 :&:
@@ -163,3 +174,36 @@ infixr 7 :&:
 type (f :&: a) e = (f :*: Const a) e
 
 ----------------------------------------------------------------------------------------------------
+-- Subsumption with products
+
+infixl 5 :<*:
+
+class f :<*: g where
+    injProduct :: f a -> g a
+    projProduct :: g a -> Maybe (f a)
+
+instance (f :<*: g) => (f :*: h) :<*: (g :*: h) where
+    injProduct :: (f :*: h) a -> (g :*: h) a
+    injProduct = undefined
+    projProduct :: (g :*: h) a -> Maybe ((f :*: h) a)
+    projProduct = undefined
+
+-- instance f :<: f where
+--     inj = id
+--     proj = Just
+
+-- instance {-# OVERLAPPABLE #-} f :<: (f :+: g) where
+--     inj = Inl . inj
+--     proj (Inl f) = Just f
+--     proj (Inr _) = Nothing
+
+-- instance {-# OVERLAPPABLE #-} (f :<: g) => (f :<: (h :+: g)) where
+--     inj = Inr . inj
+--     proj (Inl _) = Nothing
+--     proj (Inr g) = proj g
+
+-- inject :: (g :<: f) => g (Term f) -> Term f
+-- inject = Term . inj
+
+-- project :: (g :<: f) => Term f -> Maybe (g (Term f))
+-- project (Term t) = proj t
