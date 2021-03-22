@@ -143,7 +143,7 @@ number = do
 data DemoAST
     = Literal Int
     | Add DemoAST DemoAST
-    -- | Variable String
+    -- Variable String
     deriving (Show, Eq, Ord, Generic)
 instance Hashable DemoAST
 instance D DemoAST
