@@ -1,0 +1,115 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.34.3.
+--
+-- see: https://github.com/sol/hpack
+
+name:           typelevel
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/xicesky/haskell-playground#readme>
+homepage:       https://github.com/xicesky/haskell-playground#readme
+bug-reports:    https://github.com/xicesky/haskell-playground/issues
+author:         Markus Dangl
+maintainer:     sky@q1cc.net
+copyright:      (c) Markus Dangl
+license:        MIT
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    LICENSE
+
+source-repository head
+  type: git
+  location: https://github.com/xicesky/haskell-playground
+
+library
+  exposed-modules:
+      Impredicative
+      TypeFamilyClasses
+      Typelevel.PropEquality
+      Typelevel.SimpleDataKinds
+      Typelevel.SimpleGADTs
+      Typelevel.SimpleSingletons
+      Typelevel.SimpleSingletonsEx01
+  other-modules:
+      Paths_typelevel
+  hs-source-dirs:
+      src
+  default-extensions: ConstraintKinds DataKinds DefaultSignatures DeriveFunctor DeriveFoldable DeriveTraversable EmptyCase ExistentialQuantification FlexibleContexts FlexibleInstances GADTs InstanceSigs KindSignatures LambdaCase MultiParamTypeClasses NoCUSKs NoStarIsType PolyKinds RankNTypes ScopedTypeVariables StandaloneDeriving StandaloneKindSignatures TemplateHaskell TypeApplications TypeFamilies TypeOperators UndecidableInstances
+  build-depends:
+      base >=4.7 && <5
+    , containers
+    , hashable
+    , mtl
+    , singletons
+    , text
+    , transformers
+    , unordered-containers
+  default-language: Haskell2010
+
+executable typelevel
+  main-is: Main.hs
+  other-modules:
+      Paths_typelevel
+  hs-source-dirs:
+      executable
+  default-extensions: ConstraintKinds DataKinds DefaultSignatures DeriveFunctor DeriveFoldable DeriveTraversable EmptyCase ExistentialQuantification FlexibleContexts FlexibleInstances GADTs InstanceSigs KindSignatures LambdaCase MultiParamTypeClasses NoCUSKs NoStarIsType PolyKinds RankNTypes ScopedTypeVariables StandaloneDeriving StandaloneKindSignatures TemplateHaskell TypeApplications TypeFamilies TypeOperators UndecidableInstances
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , containers
+    , hashable
+    , mtl
+    , singletons
+    , text
+    , transformers
+    , typelevel
+    , unordered-containers
+  default-language: Haskell2010
+
+test-suite typelevel-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_typelevel
+  hs-source-dirs:
+      test
+  default-extensions: ConstraintKinds DataKinds DefaultSignatures DeriveFunctor DeriveFoldable DeriveTraversable EmptyCase ExistentialQuantification FlexibleContexts FlexibleInstances GADTs InstanceSigs KindSignatures LambdaCase MultiParamTypeClasses NoCUSKs NoStarIsType PolyKinds RankNTypes ScopedTypeVariables StandaloneDeriving StandaloneKindSignatures TemplateHaskell TypeApplications TypeFamilies TypeOperators UndecidableInstances
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      QuickCheck
+    , base >=4.7 && <5
+    , containers
+    , hashable
+    , hspec
+    , mtl
+    , quickcheck-instances
+    , singletons
+    , text
+    , transformers
+    , typelevel
+    , unordered-containers
+  default-language: Haskell2010
+
+benchmark typelevel-benchmarks
+  type: exitcode-stdio-1.0
+  main-is: Main.hs
+  other-modules:
+      Paths_typelevel
+  hs-source-dirs:
+      benchmark
+  default-extensions: ConstraintKinds DataKinds DefaultSignatures DeriveFunctor DeriveFoldable DeriveTraversable EmptyCase ExistentialQuantification FlexibleContexts FlexibleInstances GADTs InstanceSigs KindSignatures LambdaCase MultiParamTypeClasses NoCUSKs NoStarIsType PolyKinds RankNTypes ScopedTypeVariables StandaloneDeriving StandaloneKindSignatures TemplateHaskell TypeApplications TypeFamilies TypeOperators UndecidableInstances
+  ghc-options: -rtsopts -threaded -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , containers
+    , criterion
+    , hashable
+    , mtl
+    , singletons
+    , text
+    , transformers
+    , typelevel
+    , unordered-containers
+  default-language: Haskell2010

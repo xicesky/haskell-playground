@@ -1,0 +1,101 @@
+name:                typelevel
+version:             0.1.0.0
+github:              "xicesky/haskell-playground"
+license:             MIT
+license-file:        LICENSE
+author:              "Markus Dangl"
+maintainer:          "sky@q1cc.net"
+copyright:           "(c) Markus Dangl"
+
+extra-source-files:
+- README.md
+- LICENSE
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            Web
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on GitHub at <https://github.com/xicesky/haskell-playground#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+- text
+- containers
+- hashable
+- unordered-containers
+- mtl
+- transformers
+- singletons
+
+
+default-extensions:
+- ConstraintKinds
+- DataKinds
+- DefaultSignatures
+- DeriveFunctor
+- DeriveFoldable
+- DeriveTraversable
+- EmptyCase
+- ExistentialQuantification
+- FlexibleContexts
+- FlexibleInstances
+- GADTs
+- InstanceSigs
+- KindSignatures
+- LambdaCase
+- MultiParamTypeClasses
+- NoCUSKs
+- NoStarIsType
+- PolyKinds
+- RankNTypes
+- ScopedTypeVariables
+- StandaloneDeriving
+- StandaloneKindSignatures
+- TemplateHaskell
+- TypeApplications
+- TypeFamilies
+- TypeOperators
+- UndecidableInstances
+
+library:
+  source-dirs: src
+
+executables:
+  typelevel:
+    main:                Main.hs
+    source-dirs:         executable
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - typelevel
+
+benchmarks:
+  typelevel-benchmarks:
+    main:                Main.hs
+    source-dirs:         benchmark
+    ghc-options:
+    - -rtsopts
+    - -threaded
+    - -with-rtsopts=-N
+    dependencies:
+    - typelevel
+    - criterion
+
+tests:
+  typelevel-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - typelevel
+    - QuickCheck
+    - hspec
+    - quickcheck-instances
