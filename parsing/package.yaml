@@ -1,0 +1,102 @@
+name:                parsing
+version:             0.1.0.0
+github:              "xicesky/haskell-playground"
+license:             MIT
+license-file:        LICENSE
+author:              "Markus Dangl"
+maintainer:          "sky@q1cc.net"
+copyright:           "(c) Markus Dangl"
+
+extra-source-files:
+- README.md
+- LICENSE
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            Web
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on GitHub at <https://github.com/xicesky/haskell-playground#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+- text
+- containers
+- hashable
+- unordered-containers
+- mtl
+- transformers
+- data-fix
+- lens
+- template-haskell
+
+default-extensions:
+- ConstraintKinds
+- DataKinds
+- DeriveFunctor
+- DeriveFoldable
+- DeriveTraversable
+- EmptyDataDecls
+- EmptyCase
+- FlexibleContexts
+- FlexibleInstances
+- GADTs
+- InstanceSigs
+- KindSignatures
+- LambdaCase
+- MultiParamTypeClasses
+- PolyKinds
+- RankNTypes
+- ScopedTypeVariables
+- StandaloneDeriving
+- StandaloneKindSignatures
+- TemplateHaskell
+- TypeApplications
+- TypeFamilies
+- TypeOperators
+- UndecidableInstances
+
+ghc-options:
+- -Wall
+
+library:
+  source-dirs: src
+
+executables:
+  parsing:
+    main:                Main.hs
+    source-dirs:         executable
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - parsing
+
+benchmarks:
+  parsing-benchmarks:
+    main:                Main.hs
+    source-dirs:         benchmark
+    ghc-options:
+    - -rtsopts
+    - -threaded
+    - -with-rtsopts=-N
+    dependencies:
+    - parsing
+    - criterion
+
+tests:
+  parsing-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - parsing
+    - QuickCheck
+    - hspec
+    - quickcheck-instances
