@@ -1,0 +1,106 @@
+name:                typelevel-experiments
+version:             0.1.0.0
+github:              "xicesky/typelevel-experiments"
+license:             BSD3
+author:              "Markus Dangl"
+maintainer:          "example@example.com"
+copyright:           "2021 Markus Dangl"
+
+extra-source-files:
+- README.md
+- ChangeLog.md
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            Web
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on GitHub at <https://github.com/xicesky/typelevel-experiments#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+- deepseq
+- text
+- singletons
+- decidable
+- deriving-compat
+- containers
+- hashable
+- unordered-containers
+- bound
+- data-fix
+- recursion-schemes
+- mtl
+- transformers
+- freer-simple
+- criterion
+- QuickCheck
+- quickcheck-instances
+
+default-extensions:
+- ConstraintKinds
+- DataKinds
+- DefaultSignatures
+- DeriveFunctor
+- DeriveFoldable
+- DeriveTraversable
+- EmptyCase
+- ExistentialQuantification
+- FlexibleContexts
+- FlexibleInstances
+- GADTs
+- InstanceSigs
+- KindSignatures
+- LambdaCase
+- MultiParamTypeClasses
+- NoCUSKs
+- NoStarIsType
+- PolyKinds
+- RankNTypes
+- ScopedTypeVariables
+- StandaloneDeriving
+- StandaloneKindSignatures
+- TemplateHaskell
+- TypeApplications
+- TypeFamilies
+- TypeOperators
+- UndecidableInstances
+
+library:
+  source-dirs: src
+
+executables:
+  typelevel-experiments-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - typelevel-experiments
+
+benchmarks:
+  nondet-benchmarks:
+    main:                NonDetBench.hs
+    source-dirs:         benchmark
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - typelevel-experiments
+    - criterion
+
+tests:
+  typelevel-experiments-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - typelevel-experiments
