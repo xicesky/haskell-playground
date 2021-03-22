@@ -14,7 +14,7 @@ See http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.302.6303&rep=rep1&t
 And https://hackage.haskell.org/package/compdata
 -}
 
-module Sky.Compositional.Algebra where
+module Old.Sky.Compositional.Algebra where
 
 import Control.Monad ((<=<))
 import Data.Functor.Const (Const)

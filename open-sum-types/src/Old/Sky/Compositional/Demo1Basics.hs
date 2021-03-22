@@ -11,9 +11,9 @@
 {-# LANGUAGE MultiParamTypeClasses  #-}
 {-# LANGUAGE UndecidableInstances   #-}
 
-module Sky.Compositional.Demo1Basics where
+module Old.Sky.Compositional.Demo1Basics where
 
-import Sky.Compositional.Algebra
+import Old.Sky.Compositional.Algebra
 
 -- For monadic demo only
 import Control.Monad.Except (Except, runExcept, throwError, catchError)

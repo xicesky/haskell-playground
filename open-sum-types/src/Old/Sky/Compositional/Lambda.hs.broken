@@ -13,7 +13,7 @@
     stack exec ghci -- -isrc -XFlexibleContexts -XTypeFamilies -XTemplateHaskell -ddump-splices src/Sky/Compositional/Lambda.hs
 -}
 
-module Sky.Compositional.Lambda where
+module Old.Sky.Compositional.Lambda where
 
 import Data.Comp.Param
 --import Data.Comp.Param.Algebra

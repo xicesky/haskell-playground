@@ -10,7 +10,7 @@
 {-# LANGUAGE MultiParamTypeClasses  #-}
 {-# LANGUAGE UndecidableInstances   #-}
 
-module Sky.Compositional.Demo3Generic where
+module Old.Sky.Compositional.Demo3Generic where
 
 ----------------------------------------------------------------------------------------------------
 

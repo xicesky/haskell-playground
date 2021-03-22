@@ -28,6 +28,13 @@ library
       Compdata.Fail.CustomCompData
       Compdata.SubsumeCommon
       Compdata.VoidTermCompdata
+      Old.Sky.Compositional.Algebra
+      Old.Sky.Compositional.Demo1Basics
+      Old.Sky.Compositional.Demo2Parametric
+      Old.Sky.Compositional.Demo3Generic
+      Old.Sky.Compositional.Demo4Contexts
+      Old.Sky.Compositional.PolyKindCats
+      Old.Sky.Compositional.TypeShiet
       PatternSynonyms
       TermRepresentation.FindInjection
       TermRepresentation.GADT

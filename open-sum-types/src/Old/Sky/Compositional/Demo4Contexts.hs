@@ -15,12 +15,12 @@
 --{-# LANGUAGE GADTs                  #-}
 {-# LANGUAGE ConstraintKinds        #-}
 
-module Sky.Compositional.Demo4Contexts where
+module Old.Sky.Compositional.Demo4Contexts where
 
 import Control.Monad.Writer.Lazy (Writer, runWriter, tell)
 
-import Sky.Compositional.Algebra
-import Sky.Compositional.Demo1Basics
+import Old.Sky.Compositional.Algebra
+import Old.Sky.Compositional.Demo1Basics
     (   Val(..), Op(..), Sug(..)
     ,   iConst, iPair, iFst, iSnd, iMult
     ,   VTerm, Exp, ETerm, Exp', ETerm'

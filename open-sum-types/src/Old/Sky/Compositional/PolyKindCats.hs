@@ -17,7 +17,7 @@
     :kind! TOr False True
 -}
 
-module Sky.Compositional.PolyKindCats where
+module Old.Sky.Compositional.PolyKindCats where
 
 class Category hom where
     ident :: hom a a

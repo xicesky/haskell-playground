@@ -18,7 +18,7 @@
 -- {-# LANGUAGE UndecidableInstances   #-}
 
 -- | Type-level programming (GHC8)
-module Sky.Compositional.TypeShiet where
+module Old.Sky.Compositional.TypeShiet where
 
 -- https://downloads.haskell.org/~ghc/8.0.1/docs/html/users_guide/glasgow_exts.html#kind-polymorphism-and-type-in-type
 -- https://downloads.haskell.org/~ghc/8.0.1/docs/html/users_guide/glasgow_exts.html#type-level-literals
