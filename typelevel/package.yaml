@@ -60,6 +60,12 @@ default-extensions:
 - TypeOperators
 - UndecidableInstances
 
+# Temporary workaround for a weird error on OSX
+# "non-portable path to file"
+when:
+  - condition: os(darwin)
+    ghc-options: -optP-Wno-nonportable-include-path
+
 library:
   source-dirs: src
 
