@@ -6,6 +6,7 @@
 -- Search with custom Eff implementation
 module NonDetSearch.SearchImplCustomEff where
 
+import Control.Applicative (Alternative(..))
 import Control.Monad hiding (guard)
 
 import NonDet.Class
@@ -61,6 +62,12 @@ data ND a
 -- instance NonDet ND where
 --     failure = Failure
 --     Choice = Choice
+
+instance Alternative (Eff ND) where
+    empty = failure
+    (<|>) = choice
+
+instance MonadPlus (Eff ND)
 
 instance NonDet (Eff ND) where
     failure     = send $ const Failure

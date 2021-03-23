@@ -20,6 +20,8 @@ import Control.Monad
 import GHC.Generics (Generic, Generic1)
 import Control.DeepSeq (NFData, NFData1, deepseq)
 
+import NonDet.Class
+
 import Debug.Trace (trace, traceM)
 
 {-----------------------------------------------------------------------------}
@@ -28,10 +30,12 @@ import Debug.Trace (trace, traceM)
 {- If "m a" represents nondeterministic computation of a,
     then anyof represents nondeterministic choice from a list.
 -}
-anyof :: MonadPlus m => [a] -> m a
-anyof [] = mzero
---anyof (x : xs) = anyof xs <|> return x
-anyof (x : xs) = return x <|> anyof xs
+-- NonDet defines: anyof :: NonDet m => [a] -> m a
+
+-- anyof :: MonadPlus m => [a] -> m a
+-- anyof [] = mzero
+-- --anyof (x : xs) = anyof xs <|> return x
+-- anyof (x : xs) = return x <|> anyof xs
 
 -- 2. Monadic Backtracking
 -- Lists as nondeterministic evaluation
@@ -279,7 +283,7 @@ iterDepthSearch step = dlToList . iterDepth step
 singleSearch :: CPS (Levels Maybe) a -> Maybe a
 singleSearch = runLevels . runCPS
 
-pytriple :: MonadPlus m => m (Int, Int, Int)
+pytriple :: NonDet m => m (Int, Int, Int)
 pytriple = do
     a <- anyof [1..]
     b <- anyof [a+1..]
@@ -327,7 +331,7 @@ inefficientLevelSearch pytriple
 -}
 
 -- | Find a string that matches @s@ via search
-strMatch :: MonadPlus m => String -> m String
+strMatch :: NonDet m => String -> m String
 strMatch s = startWith "" where
     startWith x
         | x == s                = return x
@@ -357,82 +361,9 @@ demo = let
     in x `deepseq` show x
 
 {-----------------------------------------------------------------------------}
+-- NonDet interface
 
--- Exploring CPS
+instance Alternative c => NonDet (CPS c)
 
-data MyCPS r a = MyCPS { unMyCPS :: (a -> r) -> r }
-
--- MyCPS :: (forall r. (a -> r) -> r) -> MyCPS a
--- unMyCPS :: MyCPS a -> (a -> r) -> r
-
-toMyCPS :: a -> MyCPS r a
-toMyCPS x = MyCPS $ \cont -> cont x
-
-fromMyCPS :: MyCPS a a -> a
-fromMyCPS (MyCPS f) = f id      -- "continue with id"
-
-myCPSBind :: MyCPS r a -> (a -> MyCPS r b) -> MyCPS r b
-myCPSBind (MyCPS ca) acb = MyCPS $ \cont -> let
-    -- ca :: (a -> r) -> r
-    -- acb :: a -> MyCPS r b
-    -- "acb :: a -> (b -> r) -> r"
-    -- cont :: (b -> r)
-    in ca $ \a ->
-        unMyCPS (acb a) cont -- :: r
-
-{- From https://en.wikibooks.org/wiki/Haskell/Continuation_passing_style
-chainCPS :: forall a b r. ((a -> r) -> r) -> (a -> ((b -> r) -> r)) -> ((b -> r) -> r)
-chainCPS s f = \k -> let
-    -- s :: (a -> r) -> r
-    -- f :: a -> ((b -> r) -> r)
-    -- k :: b -> r
-    fff :: a -> r
-    fff x = f x k
-    in s fff
--- chainCPS s f = \k -> s ( \x -> f x k )
--- chainCPS s f = s f  -- Occurs check: cannot construct the infinite type: r ~ (b -> r) -> r
--}
-
-instance Functor (MyCPS r) where
-    fmap :: (a -> b) -> MyCPS r a -> MyCPS r b
-    fmap f (MyCPS ca) = MyCPS $ \cont -> let
-        -- f :: a -> b
-        -- ca :: (a -> r) -> r
-        -- cont :: (b -> r) -> r
-        in ca $ cont . f
-
-instance Applicative (MyCPS r) where
-    pure :: a -> MyCPS r a
-    pure = toMyCPS
-
-    (<*>) :: MyCPS r (a -> b) -> MyCPS r a -> MyCPS r b
-    -- Long form
-    -- (<*>) cf ca =
-    --     myCPSBind cf $ \f -> 
-    --     myCPSBind ca $ \a ->
-    --     toMyCPS (f a)
-    (<*>) (MyCPS cf) (MyCPS ca) = MyCPS $ \cont -> let
-        -- cf :: ((a -> b) -> r) -> r
-        -- ca :: (a -> r) -> r
-        -- cont :: b -> r
-        in  cf $ \f ->  -- f :: a -> b
-            ca $ cont . f
-
-instance Monad (MyCPS r) where
-    -- return = pure
-    (>>=) :: MyCPS r a -> (a -> MyCPS r b) -> MyCPS r b
-    (>>=) = myCPSBind
-
-myCC :: forall a b r. ((a -> MyCPS r b) -> MyCPS r a) -> MyCPS r a
-myCC f = MyCPS $ \cont -> let
-    -- f :: (a -> (b -> r) -> r) -> (a -> r) -> r
-    -- f :: (a -> MyCPS r b) -> MyCPS r a
-    -- cont :: (a -> r)
-
-    -- ret :: a -> (b -> r) -> r
-    ret :: a -> MyCPS r b
-    ret a = MyCPS $ \_ -> cont a
-
-    -- f ret cont
-    in (unMyCPS (f ret)) cont
-
+search :: SFun
+search = SFun levelSearch

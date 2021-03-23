@@ -27,11 +27,13 @@ instance ND effs => NonDet (Eff effs) where
     choice      = mplus
 
 -- ARGH, mega-slow
-searchND :: Eff '[F.NonDet] a -> [a]
-searchND m = run $ F.makeChoiceA m
+searchND :: SFun
+searchND = SFun search where
+    search :: Eff '[F.NonDet] a -> [a]
+    search m = run $ F.makeChoiceA m
 
 {-----------------------------------------------------------------------------}
 
 -- For profiling
 profSearch :: [String] -> IO ()
-profSearch _ = print $ searchND (pidgeonHole' 8)
+profSearch _ = print $ getFun searchND (pidgeonHole' 8)

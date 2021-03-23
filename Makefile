@@ -14,6 +14,7 @@ LOGFILE := local/make.log
 
 # FIXME: tool locations should be autodetected or configured in /local
 TOOL_STACK := $(shell which stack)
+TOOL_OPEN := open
 
 #######################################################
 # Don't change this
@@ -46,21 +47,31 @@ $(shell rm -f $(LOGFILE) >/dev/null)
 # Targets
 ################################################# # # #
 
-.PHONY: default build doc release bench-all info check-tools clean distclean
+.PHONY: default build doc release bench-all \
+	nondet \
+	info check-tools clean distclean
 
 default: build
 
 build:
-	stack build --fast
+	$(TOOL_STACK) build --fast
 
 doc:
-	stack build --fast --haddock --open
+	$(TOOL_STACK) build --fast --haddock --open
 
 release:
-	stack build --test --haddock
+	$(TOOL_STACK) build --test --haddock
 
 bench-all:
-	stack bench --benchmark-arguments '--output=$$benchmark.html'
+	$(TOOL_STACK) build --bench --benchmark-arguments '--output=$$benchmark.html'
+
+nondet:
+	-@rm nondet/nondet-benchmarks.html
+	@echo "Running comparison benchmarks"
+	@echo ""
+	$(TOOL_STACK) build --bench nondet --benchmark-arguments '--output=$$benchmark.html'
+	# I am not entirely sure where the extra "s" comes from, but it's there.
+	$(TOOL_OPEN) nondet/nondet-benchmarks.html
 
 info:
 		@echo "--------------------------------------------------------------------------------"

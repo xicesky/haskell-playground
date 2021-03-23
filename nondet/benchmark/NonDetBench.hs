@@ -11,14 +11,14 @@ import Criterion.Main
 import NonDet.Class
 import NonDetSearch.SearchImpl
 import qualified NonDetSearch.SearchImplCustomEff as OLD
+import qualified NonDetSearch.ATPS09 as ATPS
 
-newtype SFun = SFun { getFun :: forall a. (forall m. (Monad m, NonDet m) => m a) -> [a] }
-
-searchFuns :: [(String, SFun)]
+searchFuns :: [(String, Int, SFun)]
 searchFuns =
-    [   ("searchList",  SFun searchList)
-    ,   ("searchND",    SFun searchND)
-    ,   ("searchNDOld", SFun OLD.searchND)
+    [   ("searchList",      8, searchList)
+    ,   ("searchND",        7, searchND)
+    ,   ("searchNDOld",     8, SFun OLD.searchND)
+    ,   ("searchATPS09",    7, ATPS.search)
     ]
 
 -- Awkward!!
@@ -29,9 +29,10 @@ benchmarkSearch :: [Benchmark]
 benchmarkSearch = 
     [ bgroup ("pidgeonHole' " ++ show n)
         [   bench fname $ nf (pg f) n
-        | (fname, f) <- searchFuns
+        | (fname, nmax, f) <- searchFuns
+        , n <= nmax
         ]
-    | n <- [7,8]
+    | n <- [7]  -- [7,8] -- 8 is already too slow
     ]
 
 benchmarks :: [Benchmark]
