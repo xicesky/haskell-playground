@@ -54,24 +54,24 @@ $(shell rm -f $(LOGFILE) >/dev/null)
 default: build
 
 build:
-	$(TOOL_STACK) build --fast
+		$(TOOL_STACK) build --fast
 
 doc:
-	$(TOOL_STACK) build --fast --haddock --open
+		$(TOOL_STACK) build --fast --haddock --open
 
 release:
-	$(TOOL_STACK) build --test --haddock
+		$(TOOL_STACK) build --test --haddock
 
 bench-all:
-	$(TOOL_STACK) build --bench --benchmark-arguments '--output=$$benchmark.html'
+		$(TOOL_STACK) build --bench --benchmark-arguments '--output=$$benchmark.html'
 
 nondet:
-	-@rm nondet/nondet-benchmarks.html
-	@echo "Running comparison benchmarks"
-	@echo ""
-	$(TOOL_STACK) build --bench nondet --benchmark-arguments '--output=$$benchmark.html'
-	# I am not entirely sure where the extra "s" comes from, but it's there.
-	$(TOOL_OPEN) nondet/nondet-benchmarks.html
+		-@rm nondet/nondet-benchmarks.html
+		@echo "Running comparison benchmarks"
+		@echo ""
+		$(TOOL_STACK) build --bench nondet --benchmark-arguments '--output=$$benchmark.html'
+# I am not entirely sure where the extra "s" comes from, but it's there.
+		$(TOOL_OPEN) nondet/nondet-benchmarks.html
 
 info:
 		@echo "--------------------------------------------------------------------------------"

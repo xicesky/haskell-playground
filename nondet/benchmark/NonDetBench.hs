@@ -10,12 +10,14 @@ import Criterion.Main
 
 import NonDet.Class
 import NonDetSearch.SearchImpl
+import NonDetSearch.MTL (searchMTL)
 import qualified NonDetSearch.SearchImplCustomEff as OLD
 import qualified NonDetSearch.ATPS09 as ATPS
 
 searchFuns :: [(String, Int, SFun)]
 searchFuns =
     [   ("searchList",      8, searchList)
+    ,   ("searchMTL",       8, searchMTL)
     ,   ("searchND",        7, searchND)
     ,   ("searchNDOld",     8, SFun OLD.searchND)
     ,   ("searchATPS09",    7, ATPS.search)
