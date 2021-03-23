@@ -365,5 +365,8 @@ demo = let
 
 instance Alternative c => NonDet (CPS c)
 
-search :: SFun
-search = SFun levelSearch
+searchATPS09dfs :: SFun
+searchATPS09dfs = SFun backtrack
+
+searchATPS09bfs :: SFun
+searchATPS09bfs = SFun levelSearch

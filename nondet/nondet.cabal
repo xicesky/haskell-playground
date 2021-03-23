@@ -28,9 +28,11 @@ library
       AlgebraicEffects.FreeMonad
       AlgebraicEffects.KSS2013
       NonDet.Class
+      NonDetSearch.Amb
       NonDetSearch.ATPS09
       NonDetSearch.ConstrainedMonadic
       NonDetSearch.CPSControl
+      NonDetSearch.HaskellWiki
       NonDetSearch.Hinze00
       NonDetSearch.MTL
       NonDetSearch.SearchImpl
@@ -49,6 +51,7 @@ library
     , freer-simple
     , hashable
     , mtl
+    , nondeterminism
     , text
     , transformers
     , unordered-containers
@@ -72,6 +75,7 @@ executable nondet
     , hashable
     , mtl
     , nondet
+    , nondeterminism
     , text
     , transformers
     , unordered-containers
@@ -98,6 +102,7 @@ test-suite nondet-test
     , hspec
     , mtl
     , nondet
+    , nondeterminism
     , quickcheck-instances
     , text
     , transformers
@@ -124,6 +129,7 @@ benchmark nondet-benchmarks
     , hashable
     , mtl
     , nondet
+    , nondeterminism
     , text
     , transformers
     , unordered-containers

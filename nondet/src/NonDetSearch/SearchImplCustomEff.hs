@@ -85,3 +85,7 @@ searchND e = loop (admin e) where
 -- For profiling
 profSearch :: [String] -> IO ()
 profSearch _ = print $ searchND (pidgeonHole' 8)
+
+-- SFun version
+searchNDOld :: SFun
+searchNDOld = SFun searchND

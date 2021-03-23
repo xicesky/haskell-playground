@@ -30,7 +30,7 @@ dependencies:
 - mtl
 - transformers
 - freer-simple
-
+- nondeterminism
 
 default-extensions:
 - ConstraintKinds

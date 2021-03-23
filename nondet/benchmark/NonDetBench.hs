@@ -16,17 +16,20 @@ import NonDet.Class
 import NonDetSearch.SearchImpl
 import NonDetSearch.MTL (searchMTL)
 import NonDetSearch.HaskellWiki (searchHWiki)
-import qualified NonDetSearch.SearchImplCustomEff as OLD
-import qualified NonDetSearch.ATPS09 as ATPS
+import NonDetSearch.Amb (searchAmb)
+import NonDetSearch.SearchImplCustomEff (searchNDOld)
+import NonDetSearch.ATPS09 (searchATPS09dfs, searchATPS09bfs)
 
 searchFuns :: [(String, Int, SFun)]
 searchFuns =
     [   ("searchList",      8, searchList)
     ,   ("searchMTL",       8, searchMTL)
     ,   ("searchHWiki",     8, searchHWiki)
+    ,   ("searchAmb",       8, searchAmb)
     ,   ("searchND",        7, searchND)
-    ,   ("searchNDOld",     8, SFun OLD.searchND)
-    ,   ("searchATPS09",    7, ATPS.search)
+    ,   ("searchNDOld",     8, searchNDOld)
+    ,   ("searchATPS09dfs", 7, searchATPS09dfs)
+    ,   ("searchATPS09bfs", 7, searchATPS09bfs)
     ]
 
 -- Awkward!!
