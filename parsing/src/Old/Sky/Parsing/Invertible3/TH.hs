@@ -57,6 +57,7 @@ conInfo :: Con -> ConstrInfo
 conInfo con@(NormalC name bangtypes)    = ConstrInfo name (map snd bangtypes) NormalConstr con
 conInfo con@(RecC name varbangtypes)    = ConstrInfo name (map getT varbangtypes) RecordConstr con where getT (_,_,t) = t
 conInfo con@(InfixC bt1 name bt2)       = ConstrInfo name [snd bt1, snd bt2] InfixConstr con
+conInfo con                             = error $ "NYI : " ++ show con
 
 -- Returns whether we are dealing with a normal Constructor
 isNormalConstr :: ConstrInfo -> Bool

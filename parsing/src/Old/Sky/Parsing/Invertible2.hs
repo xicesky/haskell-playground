@@ -121,7 +121,7 @@ opAnyAssoc name isoOp isoDecide simple op =     -- LR: AddExpr = AddExpr Op AddE
 ----------------------------------------------------------------------------------------------------
 -- More specific utilities
 
-parens :: forall ast a. (D a) => Syntax' Char a -> Syntax' Char a
+parens :: forall a. (D a) => Syntax' Char a -> Syntax' Char a
 parens = between '(' ')'
 
 digit :: Syntax' Char Char
@@ -136,6 +136,7 @@ number = do
         toLiteral = Literal . read
         fromLiteral :: DemoAST -> String
         fromLiteral (Literal i) = show i
+        fromLiteral _ = error "Should never happen :P"
 
 ----------------------------------------------------------------------------------------------------
 -- AST

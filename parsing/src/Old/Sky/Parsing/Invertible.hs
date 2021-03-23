@@ -156,6 +156,7 @@ instance Syntax Parser where
         p (x : xs) = [(x, xs)]                  -- Accept x
 
 -- Lets test it
+demoParse :: [([[Char]], String)]
 demoParse = _parse demoSyntax "ababcd"  where -- parse demoParser "abab" where
 
 ----------------------------------------------------------------------------------------------------
@@ -199,6 +200,7 @@ instance Syntax Printer where
         p v = Just [v]              -- Print it
 
 -- Lets test it
+demoPrint :: Maybe String
 demoPrint = _print demoSyntax ["ab","ab"]  where
 
 ----------------------------------------------------------------------------------------------------

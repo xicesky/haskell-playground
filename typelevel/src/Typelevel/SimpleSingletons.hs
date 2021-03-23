@@ -298,6 +298,8 @@ data SomeDoor'
 -- And now, actually using the singletons library's power
 mkSomeDoor :: DoorState -> String -> SomeDoor
 mkSomeDoor (FromSing sng) = MkSomeDoor sng . mkDoor sng     -- Mecker, mecker
+mkSomeDoor _ = error "If this happens, the singletons library is broken."
+
 -- mkSomeDoor ds = withSomeSing ds $ \sng ->
 --     MkSomeDoor sng . mkDoor sng
 -- mkSomeDoor ds = case toSing ds of
@@ -328,6 +330,7 @@ unlockSomeDoor i ld = maybe (fromDoor ld) fromDoor (unlockDoor i ld)
 openAnySomeDoor :: Int -> SomeDoor -> SomeDoor
 openAnySomeDoor i sd@(MkSomeDoor Sing d) =      -- Mecker mecker.
     maybe sd fromDoor $ openAnyDoor i d
+openAnySomeDoor _ _ = error "If this happens, the singletons library is broken."
 -- This works just fine, dear pattern checker, i promise.
 
 -- Write the SingKind instance for the promoted kind of a custom list type

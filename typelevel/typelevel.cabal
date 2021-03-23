@@ -38,6 +38,7 @@ library
   hs-source-dirs:
       src
   default-extensions: ConstraintKinds DataKinds DefaultSignatures DeriveFunctor DeriveFoldable DeriveTraversable EmptyCase ExistentialQuantification FlexibleContexts FlexibleInstances GADTs InstanceSigs KindSignatures LambdaCase MultiParamTypeClasses NoCUSKs NoStarIsType PolyKinds RankNTypes ScopedTypeVariables StandaloneDeriving StandaloneKindSignatures TemplateHaskell TypeApplications TypeFamilies TypeOperators UndecidableInstances
+  ghc-options: -Wall -Wno-orphans
   build-depends:
       base >=4.7 && <5
     , containers
@@ -58,7 +59,7 @@ executable typelevel
   hs-source-dirs:
       executable
   default-extensions: ConstraintKinds DataKinds DefaultSignatures DeriveFunctor DeriveFoldable DeriveTraversable EmptyCase ExistentialQuantification FlexibleContexts FlexibleInstances GADTs InstanceSigs KindSignatures LambdaCase MultiParamTypeClasses NoCUSKs NoStarIsType PolyKinds RankNTypes ScopedTypeVariables StandaloneDeriving StandaloneKindSignatures TemplateHaskell TypeApplications TypeFamilies TypeOperators UndecidableInstances
-  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  ghc-options: -Wall -Wno-orphans -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
     , containers
@@ -81,7 +82,7 @@ test-suite typelevel-test
   hs-source-dirs:
       test
   default-extensions: ConstraintKinds DataKinds DefaultSignatures DeriveFunctor DeriveFoldable DeriveTraversable EmptyCase ExistentialQuantification FlexibleContexts FlexibleInstances GADTs InstanceSigs KindSignatures LambdaCase MultiParamTypeClasses NoCUSKs NoStarIsType PolyKinds RankNTypes ScopedTypeVariables StandaloneDeriving StandaloneKindSignatures TemplateHaskell TypeApplications TypeFamilies TypeOperators UndecidableInstances
-  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  ghc-options: -Wall -Wno-orphans -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       QuickCheck
     , base >=4.7 && <5
@@ -107,7 +108,7 @@ benchmark typelevel-benchmarks
   hs-source-dirs:
       benchmark
   default-extensions: ConstraintKinds DataKinds DefaultSignatures DeriveFunctor DeriveFoldable DeriveTraversable EmptyCase ExistentialQuantification FlexibleContexts FlexibleInstances GADTs InstanceSigs KindSignatures LambdaCase MultiParamTypeClasses NoCUSKs NoStarIsType PolyKinds RankNTypes ScopedTypeVariables StandaloneDeriving StandaloneKindSignatures TemplateHaskell TypeApplications TypeFamilies TypeOperators UndecidableInstances
-  ghc-options: -rtsopts -threaded -with-rtsopts=-N
+  ghc-options: -Wall -Wno-orphans -rtsopts -threaded -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
     , containers

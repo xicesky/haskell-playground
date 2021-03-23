@@ -46,7 +46,7 @@ data ListR r a
 
 instance HFunctor (->) r => HFunctor (->) (ListR r) where
     hmap :: (a -> b) -> (ListR r a -> ListR r b)
-    hmap f (Nil)  = Nil
+    hmap _ (Nil)  = Nil
     hmap f (Cons a r) = Cons (f a) (hmap f r)
 
 instance HFunctor (NatTrans) (ListR) where

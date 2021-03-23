@@ -1,4 +1,13 @@
 
+{-# OPTIONS_GHC
+    -Wno-unused-imports
+    -Wno-unused-top-binds
+    -Wno-unused-local-binds
+    -Wno-unused-matches
+    -Wno-name-shadowing
+    -Wno-incomplete-patterns
+#-}
+
 {-# LANGUAGE ScopedTypeVariables    #-}
 {-# LANGUAGE InstanceSigs           #-}
 {-# LANGUAGE FlexibleContexts       #-}

@@ -1,3 +1,7 @@
+
+-- This module uses uninitialized structs on purpose
+{-# OPTIONS_GHC -Wno-missing-fields #-}
+
 {-# LANGUAGE InstanceSigs           #-}
 {-# LANGUAGE BangPatterns           #-}
 {-# LANGUAGE ScopedTypeVariables    #-}
@@ -99,8 +103,11 @@ data Example
     --  ...
     deriving (Data)
 
+c_example1 :: Constr
 c_example1 = toConstr $ Example1 {}
+c_example2 :: Constr
 c_example2 = toConstr $ Example2 {}
+c_example3 :: Constr
 c_example3 = toConstr $ Example3 {}
 
 example1 :: Iso Example ()

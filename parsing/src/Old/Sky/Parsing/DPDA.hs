@@ -68,6 +68,5 @@ pda1 stacktop     (0,   x : xs) = error $ "Unexpected '" ++ [x] ++ "', we were e
 pda1 stacktop     (i,    input) = error $ "Something went horribly wrong (" ++ show i ++ ") expecting " ++ stacktop ++ " at: " ++ input
 
 -- Shortcut
+parse :: [Char] -> (State, Input)
 parse s = pda1 "Expr" (0, s ++ "$")
-
-

@@ -93,9 +93,14 @@ iPair x y = inject (Pair x y)
 
 -- Unsafe (!!)
 projConst :: (Val :<: f) => Term f Int -> Int
-projConst v = case project v of Just (Const n) -> n
+projConst v = case project v of
+    Just (Const n) -> n
+    Nothing -> error "projConst used non non-const"
+
 projPair :: (Val :<: f) => Term f (s, t) -> (Term f s, Term f t)
-projPair v = case project v of Just (Pair x y) -> (x, y)
+projPair v = case project v of
+    Just (Pair x y) -> (x, y)
+    Nothing -> error "projPair used non non-pair"
 
 ----------------------------------------------------------------------------------------------------
 

@@ -1,4 +1,12 @@
 
+{-# OPTIONS_GHC
+    -Wno-unused-imports
+    -Wno-unused-top-binds
+    -Wno-unused-local-binds
+    -Wno-unused-matches
+    -Wno-name-shadowing
+#-}
+
 {-# LANGUAGE ScopedTypeVariables    #-}
 {-# LANGUAGE InstanceSigs           #-}
 {-# LANGUAGE FlexibleContexts       #-}
@@ -84,6 +92,7 @@ rename n0 n1 (Term (App1 f x)) = Term $ App1 (rename n0 n1 f) (rename n0 n1 x)
 rename n0 n1 (Term (Let1 n a e))
     | n == n0   = error "PROBLEM"
     | otherwise = Term $ Let1 n (rename n0 n1 a) (rename n0 n1 e)
+rename _ _ (Term Error1) = error "NYI"
 
 ----------------------------------------------------------------------------------------------------
 
@@ -308,3 +317,4 @@ instance (Eq v, Eq (f (Term6In f v))) => Eq (Term6In f v) where
     (Var6 n0) == (Var6 n1) = n0 == n1
     (LetRec6 r0) == (LetRec6 r1) = r0 newV == r1 newV where
         newV = undefined
+    _ == _ = error "NYI"

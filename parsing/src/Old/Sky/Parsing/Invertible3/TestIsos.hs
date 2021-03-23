@@ -1,4 +1,7 @@
 
+-- FIXME: TH doesn't generate type signatures
+{-# OPTIONS_GHC -Wno-missing-signatures #-}
+
 {-# LANGUAGE ScopedTypeVariables    #-}
 {-# LANGUAGE InstanceSigs           #-}
 {-# LANGUAGE BangPatterns           #-}

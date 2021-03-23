@@ -57,6 +57,7 @@ instance BaseContainer (AllSet s v) where
 instance (Constructible (s v), ElemT (s v) ~ v) => Constructible (AllSet s v) where
     empty = JustSet empty
     insert v (JustSet s) = JustSet (insert v s)
+    insert _ All = All
     singleton = JustSet . singleton
     fromList = JustSet . fromList
 
@@ -80,6 +81,7 @@ instance (Collapseable (s v), Intersectable (s v), ElemT (s v) ~ v) => Intersect
     intersection r All = r
     intersection (JustSet a) (JustSet b) = JustSet (intersection a b)
 
+    disjunct All All = False
     disjunct All (JustSet b) = isEmpty b
     disjunct (JustSet a) All = isEmpty a
     disjunct (JustSet a) (JustSet b) = disjunct a b

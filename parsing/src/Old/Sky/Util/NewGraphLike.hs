@@ -49,4 +49,5 @@ demoExpr = fromList
     , ("main", Mul (Reference "a") (Reference "b"))
     ]
 
+demo :: Int
 demo = eval demoExpr (Reference "main")

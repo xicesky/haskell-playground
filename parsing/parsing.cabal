@@ -66,7 +66,7 @@ library
   hs-source-dirs:
       src
   default-extensions: ConstraintKinds DataKinds DeriveFunctor DeriveFoldable DeriveTraversable EmptyDataDecls EmptyCase FlexibleContexts FlexibleInstances GADTs InstanceSigs KindSignatures LambdaCase MultiParamTypeClasses PolyKinds RankNTypes ScopedTypeVariables StandaloneDeriving StandaloneKindSignatures TemplateHaskell TypeApplications TypeFamilies TypeOperators UndecidableInstances
-  ghc-options: -Wall
+  ghc-options: -Wall -Wno-orphans -Wno-unused-imports -Wno-unused-top-binds -Wno-unused-local-binds -Wno-unused-matches -Wno-name-shadowing
   build-depends:
       base >=4.7 && <5
     , containers
@@ -87,7 +87,7 @@ executable parsing
   hs-source-dirs:
       executable
   default-extensions: ConstraintKinds DataKinds DeriveFunctor DeriveFoldable DeriveTraversable EmptyDataDecls EmptyCase FlexibleContexts FlexibleInstances GADTs InstanceSigs KindSignatures LambdaCase MultiParamTypeClasses PolyKinds RankNTypes ScopedTypeVariables StandaloneDeriving StandaloneKindSignatures TemplateHaskell TypeApplications TypeFamilies TypeOperators UndecidableInstances
-  ghc-options: -Wall -threaded -rtsopts -with-rtsopts=-N
+  ghc-options: -Wall -Wno-orphans -Wno-unused-imports -Wno-unused-top-binds -Wno-unused-local-binds -Wno-unused-matches -Wno-name-shadowing -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
     , containers
@@ -110,7 +110,7 @@ test-suite parsing-test
   hs-source-dirs:
       test
   default-extensions: ConstraintKinds DataKinds DeriveFunctor DeriveFoldable DeriveTraversable EmptyDataDecls EmptyCase FlexibleContexts FlexibleInstances GADTs InstanceSigs KindSignatures LambdaCase MultiParamTypeClasses PolyKinds RankNTypes ScopedTypeVariables StandaloneDeriving StandaloneKindSignatures TemplateHaskell TypeApplications TypeFamilies TypeOperators UndecidableInstances
-  ghc-options: -Wall -threaded -rtsopts -with-rtsopts=-N
+  ghc-options: -Wall -Wno-orphans -Wno-unused-imports -Wno-unused-top-binds -Wno-unused-local-binds -Wno-unused-matches -Wno-name-shadowing -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       QuickCheck
     , base >=4.7 && <5
@@ -136,7 +136,7 @@ benchmark parsing-benchmarks
   hs-source-dirs:
       benchmark
   default-extensions: ConstraintKinds DataKinds DeriveFunctor DeriveFoldable DeriveTraversable EmptyDataDecls EmptyCase FlexibleContexts FlexibleInstances GADTs InstanceSigs KindSignatures LambdaCase MultiParamTypeClasses PolyKinds RankNTypes ScopedTypeVariables StandaloneDeriving StandaloneKindSignatures TemplateHaskell TypeApplications TypeFamilies TypeOperators UndecidableInstances
-  ghc-options: -Wall -rtsopts -threaded -with-rtsopts=-N
+  ghc-options: -Wall -Wno-orphans -Wno-unused-imports -Wno-unused-top-binds -Wno-unused-local-binds -Wno-unused-matches -Wno-name-shadowing -rtsopts -threaded -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
     , containers

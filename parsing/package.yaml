@@ -60,6 +60,14 @@ default-extensions:
 
 ghc-options:
 - -Wall
+- -Wno-orphans
+# This package is rather old and generates a host of useless warnings
+- -Wno-unused-imports
+- -Wno-unused-top-binds
+- -Wno-unused-local-binds
+- -Wno-unused-matches
+- -Wno-name-shadowing
+
 
 library:
   source-dirs: src

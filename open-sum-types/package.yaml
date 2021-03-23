@@ -60,6 +60,7 @@ default-extensions:
 
 ghc-options:
 - -Wall
+- -Wno-orphans
 
 library:
   source-dirs: src

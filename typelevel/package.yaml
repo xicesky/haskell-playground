@@ -60,6 +60,10 @@ default-extensions:
 - TypeOperators
 - UndecidableInstances
 
+ghc-options:
+- -Wall
+- -Wno-orphans
+
 # Temporary workaround for a weird error on OSX
 # "non-portable path to file"
 when:

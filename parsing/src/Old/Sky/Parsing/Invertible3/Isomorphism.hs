@@ -132,11 +132,11 @@ iso :: (s -> a) -> (a -> s) -> Iso s a
 iso forward backward = Iso (forward, backward) (basicType (Proxy :: Proxy s)) (basicType (Proxy :: Proxy a))
 
 -- Construction from a data constructor: Partial on the left data type (s)
-partialIso :: forall e s a. (Data s) => s -> (s -> a) -> (a -> s) -> Iso s a
+partialIso :: forall s a. (Data s) => s -> (s -> a) -> (a -> s) -> Iso s a
 partialIso dConstr forward backward = Iso (forward, backward) (partialAlgebraicType dConstr) (basicType (Proxy :: Proxy a))
 
 -- Construction from a data constructor: Partial on the right data type (s)
-partialIsoR :: forall e s a. (Data a) => a -> (s -> a) -> (a -> s) -> Iso s a
+partialIsoR :: forall s a. (Data a) => a -> (s -> a) -> (a -> s) -> Iso s a
 partialIsoR dConstr forward backward = Iso (forward, backward) (basicType (Proxy :: Proxy s)) (partialAlgebraicType dConstr)
 --partialIsoR dConstr forward backward = reverseIso $ partialIso dConstr backward forward
 
