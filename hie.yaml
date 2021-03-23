@@ -1,0 +1,73 @@
+cradle:
+  stack:
+    - path: "nondet/src"
+      component: "nondet:lib"
+
+    - path: "nondet/executable/Main.hs"
+      component: "nondet:exe:nondet"
+
+    - path: "nondet/executable/Paths_nondet.hs"
+      component: "nondet:exe:nondet"
+
+    - path: "nondet/test"
+      component: "nondet:test:nondet-test"
+
+    - path: "nondet/benchmark/NonDetBench.hs"
+      component: "nondet:bench:nondet-benchmarks"
+
+    - path: "nondet/benchmark/Paths_nondet.hs"
+      component: "nondet:bench:nondet-benchmarks"
+
+    - path: "open-sum-types/src"
+      component: "open-sum-types:lib"
+
+    - path: "open-sum-types/executable/Main.hs"
+      component: "open-sum-types:exe:open-sum-types"
+
+    - path: "open-sum-types/executable/Paths_open_sum_types.hs"
+      component: "open-sum-types:exe:open-sum-types"
+
+    - path: "open-sum-types/test"
+      component: "open-sum-types:test:open-sum-types-test"
+
+    - path: "open-sum-types/benchmark/Main.hs"
+      component: "open-sum-types:bench:open-sum-types-benchmarks"
+
+    - path: "open-sum-types/benchmark/Paths_open_sum_types.hs"
+      component: "open-sum-types:bench:open-sum-types-benchmarks"
+
+    - path: "parsing/src"
+      component: "parsing:lib"
+
+    - path: "parsing/executable/Main.hs"
+      component: "parsing:exe:parsing"
+
+    - path: "parsing/executable/Paths_parsing.hs"
+      component: "parsing:exe:parsing"
+
+    - path: "parsing/test"
+      component: "parsing:test:parsing-test"
+
+    - path: "parsing/benchmark/Main.hs"
+      component: "parsing:bench:parsing-benchmarks"
+
+    - path: "parsing/benchmark/Paths_parsing.hs"
+      component: "parsing:bench:parsing-benchmarks"
+
+    - path: "typelevel/src"
+      component: "typelevel:lib"
+
+    - path: "typelevel/executable/Main.hs"
+      component: "typelevel:exe:typelevel"
+
+    - path: "typelevel/executable/Paths_typelevel.hs"
+      component: "typelevel:exe:typelevel"
+
+    - path: "typelevel/test"
+      component: "typelevel:test:typelevel-test"
+
+    - path: "typelevel/benchmark/Main.hs"
+      component: "typelevel:bench:typelevel-benchmarks"
+
+    - path: "typelevel/benchmark/Paths_typelevel.hs"
+      component: "typelevel:bench:typelevel-benchmarks"
