@@ -17,6 +17,7 @@ import NonDetSearch.SearchImpl
 import NonDetSearch.MTL (searchMTL)
 import NonDetSearch.HaskellWiki (searchHWiki)
 import NonDetSearch.Amb (searchAmb)
+import NonDetSearch.FusedEffects (searchFE)
 import NonDetSearch.SearchImplCustomEff (searchNDOld)
 import NonDetSearch.ATPS09 (searchATPS09dfs, searchATPS09bfs)
 
@@ -26,6 +27,7 @@ searchFuns =
     ,   ("searchMTL",       8, searchMTL)
     ,   ("searchHWiki",     8, searchHWiki)
     ,   ("searchAmb",       8, searchAmb)
+    ,   ("searchFE",        8, searchFE)
     ,   ("searchND",        7, searchND)
     ,   ("searchNDOld",     8, searchNDOld)
     ,   ("searchATPS09dfs", 7, searchATPS09dfs)

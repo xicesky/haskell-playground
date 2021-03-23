@@ -99,3 +99,10 @@ In ghci without optimisations (on my Macbook), @n = 8@ is already slow.
 -}
 pidgeonHole' :: NonDet m => Int -> m [Int]
 pidgeonHole' n = pidgeonHole n (n-1)
+
+{- 
+More ideas for non-deterministic programs:
+https://www.informatik.uni-kiel.de/~mh/curry/examples/
+https://arxiv.org/pdf/1905.06544.pdf
+
+-}

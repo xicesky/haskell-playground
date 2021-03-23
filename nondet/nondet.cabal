@@ -32,6 +32,7 @@ library
       NonDetSearch.ATPS09
       NonDetSearch.ConstrainedMonadic
       NonDetSearch.CPSControl
+      NonDetSearch.FusedEffects
       NonDetSearch.HaskellWiki
       NonDetSearch.Hinze00
       NonDetSearch.MTL
@@ -49,6 +50,7 @@ library
     , containers
     , deepseq
     , freer-simple
+    , fused-effects
     , hashable
     , mtl
     , nondeterminism
@@ -72,6 +74,7 @@ executable nondet
     , containers
     , deepseq
     , freer-simple
+    , fused-effects
     , hashable
     , mtl
     , nondet
@@ -98,6 +101,7 @@ test-suite nondet-test
     , containers
     , deepseq
     , freer-simple
+    , fused-effects
     , hashable
     , hspec
     , mtl
@@ -126,6 +130,7 @@ benchmark nondet-benchmarks
     , criterion
     , deepseq
     , freer-simple
+    , fused-effects
     , hashable
     , mtl
     , nondet

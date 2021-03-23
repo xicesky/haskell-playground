@@ -3,7 +3,14 @@
 # For more information, please see the documentation at:
 #   https://docs.haskellstack.org/en/stable/lock_files
 
-packages: []
+packages:
+- completed:
+    hackage: fused-effects-1.1.1.0@sha256:6f5cf3f2d0d61f39d97b8f63bc96564d0f64bc2801f3da828572d9f99f1e79f4,5139
+    pantry-tree:
+      size: 6288
+      sha256: 44b34742d763dbc1922e05f2b8017a8e02a298ca66c72bb4c7b0468fea4a7254
+  original:
+    hackage: fused-effects-1.1.1.0@sha256:6f5cf3f2d0d61f39d97b8f63bc96564d0f64bc2801f3da828572d9f99f1e79f4,5139
 snapshots:
 - completed:
     size: 565715
