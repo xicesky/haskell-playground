@@ -28,10 +28,10 @@ library
       AlgebraicEffects.FreeMonad
       AlgebraicEffects.KSS2013
       NonDet.Class
+      NonDetSearch.ATPS09
       NonDetSearch.ConstrainedMonadic
       NonDetSearch.CPSControl
       NonDetSearch.Hinze00
-      NonDetSearch.Nondeterminism
       NonDetSearch.SearchImpl
       NonDetSearch.SearchImpl2
       NonDetSearch.SearchImplCustomEff

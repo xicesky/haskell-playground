@@ -11,7 +11,7 @@
 -- Playing around with nondeterministic evaluation
 -- from the paper https://www-ps.informatik.uni-kiel.de/~sebf/data/pub/atps09.pdf
 
-module NonDetSearch.Nondeterminism where
+module NonDetSearch.ATPS09 where
 
 import Prelude hiding (Bounded)
 import Control.Applicative
