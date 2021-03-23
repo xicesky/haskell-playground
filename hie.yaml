@@ -18,6 +18,24 @@ cradle:
     - path: "nondet/benchmark/Paths_nondet.hs"
       component: "nondet:bench:nondet-benchmarks"
 
+    - path: "oneoffs/src"
+      component: "oneoffs:lib"
+
+    - path: "oneoffs/executable/Main.hs"
+      component: "oneoffs:exe:oneoffs"
+
+    - path: "oneoffs/executable/Paths_oneoffs.hs"
+      component: "oneoffs:exe:oneoffs"
+
+    - path: "oneoffs/test"
+      component: "oneoffs:test:oneoffs-test"
+
+    - path: "oneoffs/benchmark/Main.hs"
+      component: "oneoffs:bench:oneoffs-benchmarks"
+
+    - path: "oneoffs/benchmark/Paths_oneoffs.hs"
+      component: "oneoffs:bench:oneoffs-benchmarks"
+
     - path: "open-sum-types/src"
       component: "open-sum-types:lib"
 

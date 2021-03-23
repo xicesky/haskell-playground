@@ -33,6 +33,7 @@ packages:
 - typelevel
 - open-sum-types
 - nondet
+- oneoffs
 
 # Dependency packages to be pulled from upstream that are not in the resolver.
 # These entries can reference officially published versions as well as

@@ -1,0 +1,109 @@
+name:                oneoffs
+version:             0.1.0.0
+github:              "xicesky/haskell-playground"
+license:             MIT
+license-file:        LICENSE
+author:              "Markus Dangl"
+maintainer:          "sky@q1cc.net"
+copyright:           "(c) Markus Dangl"
+
+extra-source-files:
+- README.md
+- LICENSE
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            Web
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on GitHub at <https://github.com/xicesky/haskell-playground#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+- text
+- containers
+- hashable
+- unordered-containers
+- mtl
+- transformers
+# FIXME: create a common package
+- parsing
+
+default-extensions:
+- ConstraintKinds
+- DataKinds
+- DeriveFunctor
+- DeriveFoldable
+- DeriveTraversable
+- EmptyDataDecls
+- EmptyCase
+- FlexibleContexts
+- FlexibleInstances
+- GADTs
+- InstanceSigs
+- KindSignatures
+- LambdaCase
+- MultiParamTypeClasses
+- PolyKinds
+- RankNTypes
+- ScopedTypeVariables
+- StandaloneDeriving
+- StandaloneKindSignatures
+- TemplateHaskell
+- TypeApplications
+- TypeFamilies
+- TypeOperators
+- UndecidableInstances
+
+ghc-options:
+- -Wall
+- -Wno-orphans
+# This package is rather old and generates a host of useless warnings
+- -Wno-unused-imports
+- -Wno-unused-top-binds
+- -Wno-unused-local-binds
+- -Wno-unused-matches
+- -Wno-name-shadowing
+
+
+library:
+  source-dirs: src
+
+executables:
+  oneoffs:
+    main:                Main.hs
+    source-dirs:         executable
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - oneoffs
+
+benchmarks:
+  oneoffs-benchmarks:
+    main:                Main.hs
+    source-dirs:         benchmark
+    ghc-options:
+    - -rtsopts
+    - -threaded
+    - -with-rtsopts=-N
+    dependencies:
+    - oneoffs
+    - criterion
+
+tests:
+  oneoffs-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - oneoffs
+    - QuickCheck
+    - hspec
+    - quickcheck-instances

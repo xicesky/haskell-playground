@@ -18,8 +18,9 @@
 {-# LANGUAGE KindSignatures         #-}
 
 ----------------------------------------------------------------------------------------------------
-
-module Sky.Ideas.ExtensibleADT where
+{- I accidentally invented something like compdata
+-}
+module Ideas.Old.ExtensibleADT where
 
 import GHC.Generics
 import Data.Data

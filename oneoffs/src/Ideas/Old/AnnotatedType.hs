@@ -6,7 +6,9 @@
 
 {-# LANGUAGE UndecidableInstances   #-}
 
-module Sky.Ideas.AnnotatedType where
+{- Tagged dynamic type universes
+-}
+module Ideas.Old.AnnotatedType where
 
 -- Take some implementation of types and values
 data BaseType r
@@ -71,7 +73,9 @@ instance Lift Integer where
 -- Application which might crash if used wrongly
 unsafeApp :: Val -> Val -> Val
 unsafeApp (Fix (FunctionValue f)) v = f v
-    -- anything else will crash due to missing patterns
+-- anything else will crash due to missing patterns
+unsafeApp _ _ = error "unsafeApp is unsafe."
+
 
 -- Application
 safeApp :: SafeValue -> SafeValue -> SafeValue
@@ -94,6 +98,7 @@ vAdd :: Val
 vAdd = liftV add where
     add :: Val -> Val -> Val
     add (Fix (SimpleValue (Value a))) (Fix (SimpleValue (Value b))) = liftV (a + b)
+    add _ _ = error "Invalid call to vAdd"
 
 unsafeEx0 :: Val
 unsafeEx0 = (vAdd `unsafeApp` v1) `unsafeApp` v1
@@ -118,3 +123,4 @@ safeEx0 = (tvAdd `safeApp` tv1) `safeApp` tv1
 
 safeEx1 :: SafeValue
 safeEx1 = tv1 `safeApp` tv1
+

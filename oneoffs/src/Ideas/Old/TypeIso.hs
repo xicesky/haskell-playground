@@ -6,7 +6,7 @@
 {-# LANGUAGE TypeFamilies #-}
 {-# LANGUAGE PolyKinds #-}
 
-module Sky.Ideas.TypeIso where
+module Ideas.Old.TypeIso where
 
 -- Can we use type families to define isomorphisms on types?
 
@@ -55,3 +55,4 @@ class (ApplyI f a ~ b, UnapplyI f b ~ a) => TIso f a b where
 
 exampleApplyF :: ApplyF FAB A
 exampleApplyF = B
+
