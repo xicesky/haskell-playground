@@ -1,4 +1,6 @@
 
+{-# OPTIONS_GHC -Wno-name-shadowing #-}
+
 {-# LANGUAGE ScopedTypeVariables    #-}
 {-# LANGUAGE InstanceSigs           #-}
 {-# LANGUAGE FlexibleContexts       #-}
@@ -34,7 +36,7 @@ data OurValue r
 
 instance Show (OurValue r) where
     show (SimpleValue v) = "SimpleValue " ++ show v
-    show (FunctionValue f) = "FunctionValue"
+    show (FunctionValue _) = "FunctionValue"
 
 -- Fixpoint
 data Fix f = Fix (f (Fix f))
