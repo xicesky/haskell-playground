@@ -70,12 +70,12 @@ searchList = SFun id
 {-----------------------------------------------------------------------------}
 -- Example problems
 
--- Pythagorean triples, limited to values <= 20
-pytriple' :: NonDet m => m (Int, Int, Int)
-pytriple' = do
-    a <- anyof [1..20]
-    b <- anyof [a+1..20]
-    c <- anyof [b+1..20]
+-- Pythagorean triples, limited to values <= x
+pytriple' :: NonDet m => Int -> m (Int, Int, Int)
+pytriple' x = do
+    a <- anyof [1..x]
+    b <- anyof [a+1..x]
+    c <- anyof [b+1..x]
     guard $ a * a + b * b == c * c
     return (a, b, c)
 
