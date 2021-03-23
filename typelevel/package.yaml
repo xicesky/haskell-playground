@@ -64,14 +64,17 @@ ghc-options:
 - -Wall
 - -Wno-orphans
 
-# Temporary workaround for a weird error on OSX
-# "non-portable path to file"
 when:
-  - condition: os(darwin)
-    ghc-options: -optP-Wno-nonportable-include-path
+# Temporary workaround for a weird error on OSX: "non-portable path to file"
+- condition: os(darwin)
+  ghc-options: -optP-Wno-nonportable-include-path
 
 library:
   source-dirs: src
+  when:
+  # Workaround for https://github.com/sol/hpack/issues/303
+  - condition: false
+    other-modules: Paths_pkg
 
 executables:
   typelevel:
