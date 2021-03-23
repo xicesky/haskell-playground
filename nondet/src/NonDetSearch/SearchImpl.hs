@@ -12,7 +12,7 @@ import Control.Monad (join, MonadPlus(..))
 import Control.Monad.Freer
 import qualified Control.Monad.Freer.NonDet as F
 
-import NonDetSearch.NonDet
+import NonDet.Class
 import Debug.Trace
 
 {-----------------------------------------------------------------------------}

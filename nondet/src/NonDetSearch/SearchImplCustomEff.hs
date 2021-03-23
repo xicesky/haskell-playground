@@ -8,7 +8,7 @@ module NonDetSearch.SearchImplCustomEff where
 
 import Control.Monad hiding (guard)
 
-import NonDetSearch.NonDet
+import NonDet.Class
 import Debug.Trace
 
 {-----------------------------------------------------------------------------}
@@ -42,7 +42,7 @@ admin :: Eff r w -> VE w r
 admin (Eff m) = m Val
 
 {-----------------------------------------------------------------------------}
--- Nondeterministic, visualizable search
+-- Nondeterministic search
 
 data ND a
     =   Failure

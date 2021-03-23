@@ -2,7 +2,7 @@
 {-
 Interfaces for non-deterministic search.
 -}
-module NonDetSearch.NonDet where
+module NonDet.Class where
 
 import Data.List (foldl')
 import Control.Monad (join)

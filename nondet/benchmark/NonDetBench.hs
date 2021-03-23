@@ -8,7 +8,7 @@ http://www.serpentine.com/criterion/tutorial.html
 -}
 import Criterion.Main
 
-import NonDetSearch.NonDet
+import NonDet.Class
 import NonDetSearch.SearchImpl
 import qualified NonDetSearch.SearchImplCustomEff as OLD
 
