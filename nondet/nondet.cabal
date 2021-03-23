@@ -27,10 +27,10 @@ library
   exposed-modules:
       AlgebraicEffects.FreeMonad
       AlgebraicEffects.KSS2013
+      NonDet.Class
       NonDetSearch.ConstrainedMonadic
       NonDetSearch.CPSControl
       NonDetSearch.Hinze00
-      NonDetSearch.NonDet
       NonDetSearch.Nondeterminism
       NonDetSearch.SearchImpl
       NonDetSearch.SearchImpl2
@@ -51,6 +51,8 @@ library
     , text
     , transformers
     , unordered-containers
+  if os(darwin)
+    ghc-options: -optP-Wno-nonportable-include-path
   default-language: Haskell2010
 
 executable nondet
@@ -72,6 +74,8 @@ executable nondet
     , text
     , transformers
     , unordered-containers
+  if os(darwin)
+    ghc-options: -optP-Wno-nonportable-include-path
   default-language: Haskell2010
 
 test-suite nondet-test
@@ -97,6 +101,8 @@ test-suite nondet-test
     , text
     , transformers
     , unordered-containers
+  if os(darwin)
+    ghc-options: -optP-Wno-nonportable-include-path
   default-language: Haskell2010
 
 benchmark nondet-benchmarks
@@ -120,4 +126,6 @@ benchmark nondet-benchmarks
     , text
     , transformers
     , unordered-containers
+  if os(darwin)
+    ghc-options: -optP-Wno-nonportable-include-path
   default-language: Haskell2010

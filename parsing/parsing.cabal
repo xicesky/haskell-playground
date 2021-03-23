@@ -78,6 +78,8 @@ library
     , text
     , transformers
     , unordered-containers
+  if os(darwin)
+    ghc-options: -optP-Wno-nonportable-include-path
   default-language: Haskell2010
 
 executable parsing
@@ -100,6 +102,8 @@ executable parsing
     , text
     , transformers
     , unordered-containers
+  if os(darwin)
+    ghc-options: -optP-Wno-nonportable-include-path
   default-language: Haskell2010
 
 test-suite parsing-test
@@ -126,6 +130,8 @@ test-suite parsing-test
     , text
     , transformers
     , unordered-containers
+  if os(darwin)
+    ghc-options: -optP-Wno-nonportable-include-path
   default-language: Haskell2010
 
 benchmark parsing-benchmarks
@@ -150,4 +156,6 @@ benchmark parsing-benchmarks
     , text
     , transformers
     , unordered-containers
+  if os(darwin)
+    ghc-options: -optP-Wno-nonportable-include-path
   default-language: Haskell2010
