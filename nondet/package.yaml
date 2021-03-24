@@ -29,6 +29,7 @@ dependencies:
 - unordered-containers
 - mtl
 - transformers
+- lens
 - freer-simple
 - nondeterminism
 - fused-effects

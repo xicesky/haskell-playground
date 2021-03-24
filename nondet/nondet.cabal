@@ -39,6 +39,7 @@ library
       NonDetSearch.SearchImplCustomEff
       OneOff.ConstrainedMonadic
       OneOff.CPSControl
+      OneOff.FDConstraint
       OneOff.FKS2009
       OneOff.Hinze00
   other-modules:
@@ -54,6 +55,7 @@ library
     , freer-simple
     , fused-effects
     , hashable
+    , lens
     , logict
     , mtl
     , nondeterminism
@@ -79,6 +81,7 @@ executable nondet
     , freer-simple
     , fused-effects
     , hashable
+    , lens
     , logict
     , mtl
     , nondet
@@ -108,6 +111,7 @@ test-suite nondet-test
     , fused-effects
     , hashable
     , hspec
+    , lens
     , logict
     , mtl
     , nondet
@@ -137,6 +141,7 @@ benchmark nondet-benchmarks
     , freer-simple
     , fused-effects
     , hashable
+    , lens
     , logict
     , mtl
     , nondet
