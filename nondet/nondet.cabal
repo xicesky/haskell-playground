@@ -35,6 +35,7 @@ library
       NonDetSearch.FusedEffects
       NonDetSearch.HaskellWiki
       NonDetSearch.Hinze00
+      NonDetSearch.LogicT
       NonDetSearch.MTL
       NonDetSearch.SearchImpl
       NonDetSearch.SearchImpl2
@@ -53,6 +54,7 @@ library
     , freer-simple
     , fused-effects
     , hashable
+    , logict
     , mtl
     , nondeterminism
     , text
@@ -77,6 +79,7 @@ executable nondet
     , freer-simple
     , fused-effects
     , hashable
+    , logict
     , mtl
     , nondet
     , nondeterminism
@@ -105,6 +108,7 @@ test-suite nondet-test
     , fused-effects
     , hashable
     , hspec
+    , logict
     , mtl
     , nondet
     , nondeterminism
@@ -133,6 +137,7 @@ benchmark nondet-benchmarks
     , freer-simple
     , fused-effects
     , hashable
+    , logict
     , mtl
     , nondet
     , nondeterminism

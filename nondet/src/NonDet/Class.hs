@@ -43,7 +43,9 @@ class MonadPlus m => NonDet m where
     choices = foldl' choice failure
 
     anyof :: [a] -> m a
-    anyof = choices . fmap pure
+    anyof xs = foldl' (\x y -> choice x (pure y)) failure xs
+    -- anyof = foldl' (choice . pure) failure
+    -- anyof = choices . fmap pure
 
     -- guard :: Bool -> m ()
     -- guard True  = return ()

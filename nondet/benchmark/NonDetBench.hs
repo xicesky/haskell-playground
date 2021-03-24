@@ -7,7 +7,10 @@ stack bench --ghc-options=-O1 --benchmark-arguments '--output=$benchmark.html' &
 http://www.serpentine.com/criterion/tutorial.html
 -}
 
-{-# OPTIONS_GHC -Wno-unused-top-binds #-}
+{-# OPTIONS_GHC
+    -Wno-unused-top-binds
+    -Wno-unused-imports
+#-}
 
 import Criterion.Main
 
@@ -16,6 +19,7 @@ import NonDet.Class
 import NonDetSearch.SearchImpl
 import NonDetSearch.MTL (searchMTL)
 import NonDetSearch.HaskellWiki (searchHWiki)
+import NonDetSearch.LogicT (searchLogicT, searchLogicBFS)
 import NonDetSearch.Amb (searchAmb)
 import NonDetSearch.FusedEffects (searchFE)
 import NonDetSearch.SearchImplCustomEff (searchNDOld)
@@ -26,6 +30,8 @@ searchFuns =
     [   ("searchList",      8, searchList)
     ,   ("searchMTL",       8, searchMTL)
     ,   ("searchHWiki",     8, searchHWiki)
+    ,   ("searchLogicT",    8, searchLogicT)
+    --,   ("searchLogicBFS",  7, searchLogicBFS)    -- too slow (> 3s)
     ,   ("searchAmb",       8, searchAmb)
     ,   ("searchFE",        8, searchFE)
     ,   ("searchND",        7, searchND)
