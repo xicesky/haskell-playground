@@ -1,5 +1,5 @@
 
-module NonDetSearch.Hinze00 where
+module OneOff.Hinze00 where
 
 import Control.Monad
 

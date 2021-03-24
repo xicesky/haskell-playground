@@ -4,7 +4,7 @@
     -Wno-name-shadowing
 #-}
 
-module NonDetSearch.CPSControl where
+module OneOff.CPSControl where
 
 import Control.Applicative (Alternative)
 import Control.Monad

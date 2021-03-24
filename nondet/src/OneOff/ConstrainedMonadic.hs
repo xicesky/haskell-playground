@@ -2,7 +2,7 @@
 -- Just playing around with Ideas from
 --  https://www-ps.informatik.uni-kiel.de/~sebf/category/projects/index.html
 
-module NonDetSearch.ConstrainedMonadic where
+module OneOff.ConstrainedMonadic where
 
 import Data.Kind (Type)
 import Control.Applicative

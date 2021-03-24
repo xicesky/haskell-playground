@@ -30,17 +30,17 @@ library
       NonDet.Class
       NonDetSearch.Amb
       NonDetSearch.ATPS09
-      NonDetSearch.ConstrainedMonadic
-      NonDetSearch.CPSControl
       NonDetSearch.FusedEffects
       NonDetSearch.HaskellWiki
-      NonDetSearch.Hinze00
       NonDetSearch.LogicT
       NonDetSearch.MTL
       NonDetSearch.SearchImpl
       NonDetSearch.SearchImpl2
       NonDetSearch.SearchImplCustomEff
+      OneOff.ConstrainedMonadic
+      OneOff.CPSControl
       OneOff.FKS2009
+      OneOff.Hinze00
   other-modules:
       Paths_nondet
   hs-source-dirs:
