@@ -39,6 +39,7 @@ library
       NonDetSearch.SearchImpl
       NonDetSearch.SearchImpl2
       NonDetSearch.SearchImplCustomEff
+      OneOff.FKS2009
   other-modules:
       Paths_nondet
   hs-source-dirs:
