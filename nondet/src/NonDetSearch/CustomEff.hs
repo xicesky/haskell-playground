@@ -4,7 +4,7 @@
 #-}
 
 -- Search with custom Eff implementation
-module NonDetSearch.SearchImplCustomEff where
+module NonDetSearch.CustomEff where
 
 import Control.Applicative (Alternative(..))
 import Control.Monad hiding (guard)
@@ -83,9 +83,9 @@ searchND e = loop (admin e) where
     loop (E (Choice a b)) = loop a ++ loop b    -- Inefficient
 
 -- For profiling
-profSearch :: [String] -> IO ()
-profSearch _ = print $ searchND (pidgeonHole' 8)
+profCustomEff :: [String] -> IO ()
+profCustomEff _ = print $ searchND (pidgeonHole' 8)
 
 -- SFun version
-searchNDOld :: SFun
-searchNDOld = SFun searchND
+searchCustomEff :: SFun
+searchCustomEff = SFun searchND

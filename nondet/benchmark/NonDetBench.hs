@@ -16,13 +16,13 @@ import Criterion.Main
 
 import Control.Monad (join)
 import NonDet.Class
-import NonDetSearch.SearchImpl
 import NonDetSearch.MTL (searchMTL)
 import NonDetSearch.HaskellWiki (searchHWiki)
 import NonDetSearch.LogicT (searchLogicT, searchLogicBFS)
 import NonDetSearch.Amb (searchAmb)
 import NonDetSearch.FusedEffects (searchFE)
-import NonDetSearch.SearchImplCustomEff (searchNDOld)
+import NonDetSearch.Freer (searchFreer)
+import NonDetSearch.CustomEff (searchCustomEff)
 import NonDetSearch.ATPS09 (searchATPS09dfs, searchATPS09bfs)
 
 searchFuns :: [(String, Int, SFun)]
@@ -34,8 +34,8 @@ searchFuns =
     -- ,   ("searchLogicBFS",  99, searchLogicBFS)    -- too slow (> 3s)
     ,   ("searchAmb",       99, searchAmb)
     ,   ("searchFE",        99, searchFE)
-    ,   ("searchND",        99, searchND)
-    ,   ("searchNDOld",     99, searchNDOld)
+    ,   ("searchFreer",     99, searchFreer)
+    ,   ("searchCustomEff", 99, searchCustomEff)
     ,   ("searchATPS09dfs", 99, searchATPS09dfs)
     ,   ("searchATPS09bfs", 99, searchATPS09bfs)
     ]

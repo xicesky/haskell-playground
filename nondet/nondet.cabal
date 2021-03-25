@@ -31,13 +31,12 @@ library
       NonDet.Interactive
       NonDetSearch.Amb
       NonDetSearch.ATPS09
+      NonDetSearch.CustomEff
+      NonDetSearch.Freer
       NonDetSearch.FusedEffects
       NonDetSearch.HaskellWiki
       NonDetSearch.LogicT
       NonDetSearch.MTL
-      NonDetSearch.SearchImpl
-      NonDetSearch.SearchImpl2
-      NonDetSearch.SearchImplCustomEff
       OneOff.ConstrainedMonadic
       OneOff.CPSControl
       OneOff.FDConstraint

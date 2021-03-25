@@ -4,8 +4,8 @@
     -Wno-orphans
 #-}
 
--- Naive but general solver
-module NonDetSearch.SearchImpl where
+-- Based on: http://hackage.haskell.org/package/freer-simple
+module NonDetSearch.Freer where
 
 import Control.Monad (join, MonadPlus(..))
 --import Control.Monad hiding (guard)
@@ -27,13 +27,13 @@ instance ND effs => NonDet (Eff effs) where
     choice      = mplus
 
 -- ARGH, mega-slow
-searchND :: SFun
-searchND = SFun search where
+searchFreer :: SFun
+searchFreer = SFun search where
     search :: Eff '[F.NonDet] a -> [a]
     search m = run $ F.makeChoiceA m
 
 {-----------------------------------------------------------------------------}
 
 -- For profiling
-profSearch :: [String] -> IO ()
-profSearch _ = print $ getFun searchND (pidgeonHole' 8)
+profFreer :: [String] -> IO ()
+profFreer _ = print $ getFun searchFreer (pidgeonHole' 8)

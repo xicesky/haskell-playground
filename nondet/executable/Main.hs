@@ -16,13 +16,13 @@ import System.Environment
 --import System.Exit
 
 --import NonDetSearch.NonDet
-import NonDetSearch.SearchImpl
-import qualified NonDetSearch.SearchImplCustomEff as OLD
+import NonDetSearch.Freer (profFreer)
+import NonDetSearch.CustomEff (profCustomEff)
 
 funcs :: [(String, [String] -> IO ())]
 funcs =
-    [   ("profSearch", profSearch)
-    ,   ("profSearchOld", OLD.profSearch)
+    [   ("profFreer", profFreer)
+    ,   ("profCustomEff", profCustomEff)
     ]
 
 help :: IO ()
