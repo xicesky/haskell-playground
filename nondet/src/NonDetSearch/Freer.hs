@@ -26,11 +26,20 @@ instance ND effs => NonDet (Eff effs) where
     choice :: Eff effs a -> Eff effs a -> Eff effs a
     choice      = mplus
 
--- ARGH, mega-slow
 searchFreer :: SFun
 searchFreer = SFun search where
     search :: Eff '[F.NonDet] a -> [a]
     search m = run $ F.makeChoiceA m
+
+{- Using msplit doesn't help -}
+-- searchFreer :: SFun
+-- searchFreer = SFun search where
+--     search :: Eff '[F.NonDet] a -> [a]
+--     search m = run $ loop m     -- Not supported
+--     loop :: Eff '[F.NonDet] a -> Eff '[F.NonDet] [a]
+--     loop m = F.msplit m >>= \case
+--         Nothing -> return []
+--         Just (a, rest) -> (a :) <$> loop rest
 
 {-----------------------------------------------------------------------------}
 
