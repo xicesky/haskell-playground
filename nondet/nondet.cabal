@@ -28,6 +28,7 @@ library
       AlgebraicEffects.FreeMonad
       AlgebraicEffects.KSS2013
       NonDet.Class
+      NonDet.Interactive
       NonDetSearch.Amb
       NonDetSearch.ATPS09
       NonDetSearch.FusedEffects

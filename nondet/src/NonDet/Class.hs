@@ -1,4 +1,6 @@
 
+{-# OPTIONS_GHC -Wno-unused-imports #-}
+
 {-
 Interfaces for non-deterministic search.
 -}
@@ -20,7 +22,10 @@ module NonDet.Class
     ) where
 
 import Data.List (foldl')
-import Control.Monad (MonadPlus(..), guard)
+import Control.Monad (MonadPlus(..), guard, unless)
+
+-- import Text.Printf
+-- import Debug.Trace
 
 {-----------------------------------------------------------------------------}
 -- Support for non-determinism (apart from Applicative)
@@ -85,12 +90,19 @@ pytriple' x = do
 pidgeonHole :: NonDet m => Int -> Int -> m [Int]
 pidgeonHole 0 _ = return []
 pidgeonHole n m = do
+    -- traceM $ "choosing pidgeon holes " ++ show n ++ " -> " ++ show m
+
     -- Choose hole for n-th pidgeon
-    hole <- anyof [1..m]
+    -- N.B: swapping these two makes most Monads VERY SLOW
     others <- pidgeonHole (n-1) m
-    --traceM $ "pidgeonHole " ++ show (hole : others)
+    hole <- anyof [1..m]
+    -- traceM $ printf "Pidgeon #%d gets hole #%d. (already assigned: %s)" n hole (show others)
+    
     -- Hole must be free
-    guard $ notElem hole others
+    let isFree = hole `notElem` others
+    -- unless isFree $ traceM ("Hole " ++ show hole ++ " is already taken")
+    guard isFree
+
     return $ hole : others
 
 {- | How to fit n pidgeons in (n-1) holes?

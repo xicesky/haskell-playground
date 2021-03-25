@@ -27,17 +27,17 @@ import NonDetSearch.ATPS09 (searchATPS09dfs, searchATPS09bfs)
 
 searchFuns :: [(String, Int, SFun)]
 searchFuns =
-    [   ("searchList",      8, searchList)
-    ,   ("searchMTL",       8, searchMTL)
-    ,   ("searchHWiki",     8, searchHWiki)
-    ,   ("searchLogicT",    8, searchLogicT)
-    --,   ("searchLogicBFS",  7, searchLogicBFS)    -- too slow (> 3s)
-    ,   ("searchAmb",       8, searchAmb)
-    ,   ("searchFE",        8, searchFE)
-    ,   ("searchND",        7, searchND)
-    ,   ("searchNDOld",     8, searchNDOld)
-    ,   ("searchATPS09dfs", 7, searchATPS09dfs)
-    ,   ("searchATPS09bfs", 7, searchATPS09bfs)
+    [   ("searchList",      99, searchList)
+    ,   ("searchMTL",       99, searchMTL)
+    ,   ("searchHWiki",     99, searchHWiki)
+    ,   ("searchLogicT",    99, searchLogicT)
+    -- ,   ("searchLogicBFS",  99, searchLogicBFS)    -- too slow (> 3s)
+    ,   ("searchAmb",       99, searchAmb)
+    ,   ("searchFE",        99, searchFE)
+    ,   ("searchND",        99, searchND)
+    ,   ("searchNDOld",     99, searchNDOld)
+    ,   ("searchATPS09dfs", 99, searchATPS09dfs)
+    ,   ("searchATPS09bfs", 99, searchATPS09bfs)
     ]
 
 -- Awkward!!
@@ -50,7 +50,7 @@ benchPG = [ bgroup ("pidgeonHole' " ++ show n)
         | (fname, nmax, f) <- searchFuns
         , n <= nmax
         ]
-    | n <- [7]  -- [7,8] -- 8 is already too slow
+    | n <- [9]  -- [7,8] -- 8 is already too slow
     ]
 
 benchPT :: [Benchmark]

@@ -1,6 +1,7 @@
 
 {-# OPTIONS_GHC
     -Wno-unused-imports
+    -Wno-unused-matches
 #-}
 
 -- http://overtond.blogspot.com/2008/07/pre.html
