@@ -46,6 +46,10 @@ packages:
 #
 extra-deps:
 - fused-effects-1.1.1.0@sha256:6f5cf3f2d0d61f39d97b8f63bc96564d0f64bc2801f3da828572d9f99f1e79f4,5139
+# FIXME later: polysemy-1.4.0.0 on hackage doesn't work with current stackage
+#- polysemy-1.4.0.0@sha256:0245a046eaf936557d4208b5a355df1a20799c9e274f91fa889ab2644ecbabae,6541
+- github: polysemy-research/polysemy
+  commit: ef154f996a18aa907166e3211170db08cfb56fed
 
 # Override default flag values for local packages and extra-deps
 # flags: {}

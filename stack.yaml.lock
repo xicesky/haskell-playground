@@ -11,6 +11,17 @@ packages:
       sha256: 44b34742d763dbc1922e05f2b8017a8e02a298ca66c72bb4c7b0468fea4a7254
   original:
     hackage: fused-effects-1.1.1.0@sha256:6f5cf3f2d0d61f39d97b8f63bc96564d0f64bc2801f3da828572d9f99f1e79f4,5139
+- completed:
+    size: 138042
+    url: https://github.com/polysemy-research/polysemy/archive/ef154f996a18aa907166e3211170db08cfb56fed.tar.gz
+    name: polysemy
+    version: 1.4.0.0
+    sha256: 477a861725426e272986fd7a646fdb3ab78ae50dee8e98640ff3d2aabc94dc2e
+    pantry-tree:
+      size: 6880
+      sha256: 6986a7c48cdb3941272f5919c5eb8285972b7e7151dc8d0f2ed6edca2a3f62d1
+  original:
+    url: https://github.com/polysemy-research/polysemy/archive/ef154f996a18aa907166e3211170db08cfb56fed.tar.gz
 snapshots:
 - completed:
     size: 565715

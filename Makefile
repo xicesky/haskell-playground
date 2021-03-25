@@ -48,7 +48,7 @@ $(shell rm -f $(LOGFILE) >/dev/null)
 ################################################# # # #
 
 .PHONY: default build doc release bench-all \
-	nondet \
+	nondet nondeto2 \
 	info check-tools clean distclean
 
 default: build
@@ -69,9 +69,21 @@ nondet:
 		-@rm nondet/nondet-benchmarks.html
 		@echo "Running comparison benchmarks"
 		@echo ""
-		$(TOOL_STACK) build --bench nondet --benchmark-arguments '--output=$$benchmark.html'
-# I am not entirely sure where the extra "s" comes from, but it's there.
+		$(TOOL_STACK) build nondet \
+			--bench --benchmark-arguments '--output=$$benchmark.html'
+# '$benchmark' expands to the name of the benchmark defined in package.yaml
+# I am not entirely sure who does the expansion (stack? hpack? cabal?).
 		$(TOOL_OPEN) nondet/nondet-benchmarks.html
+
+nondeto2:
+# Variant with costly optimization flags
+		-@rm nondet/O2-nondet-benchmarks.html
+		@echo "Running comparison benchmarks (-O2 ...)"
+		@echo ""
+		$(TOOL_STACK) build nondet \
+			--ghc-options="-O2 -flate-specialise -fspecialise-aggressively" \
+			--bench --benchmark-arguments '--output=O2-$$benchmark.html'
+		$(TOOL_OPEN) nondet/O2-nondet-benchmarks.html
 
 info:
 		@echo "--------------------------------------------------------------------------------"
@@ -96,4 +108,4 @@ distclean:
 		$(TOOL_STACK) clean --full
 		# Remove benchmarking & profiling reports
 		-@rm nondet/nondet-benchmarks.html
-
+		-@rm nondet/O2-nondet-benchmarks.html

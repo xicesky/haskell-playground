@@ -37,6 +37,7 @@ library
       NonDetSearch.HaskellWiki
       NonDetSearch.LogicT
       NonDetSearch.MTL
+      NonDetSearch.Polysemy
       OneOff.ConstrainedMonadic
       OneOff.CPSControl
       OneOff.FDConstraint
@@ -59,6 +60,7 @@ library
     , logict
     , mtl
     , nondeterminism
+    , polysemy
     , text
     , transformers
     , unordered-containers
@@ -86,6 +88,7 @@ executable nondet
     , mtl
     , nondet
     , nondeterminism
+    , polysemy
     , text
     , transformers
     , unordered-containers
@@ -116,6 +119,7 @@ test-suite nondet-test
     , mtl
     , nondet
     , nondeterminism
+    , polysemy
     , quickcheck-instances
     , text
     , transformers
@@ -146,6 +150,7 @@ benchmark nondet-benchmarks
     , mtl
     , nondet
     , nondeterminism
+    , polysemy
     , text
     , transformers
     , unordered-containers

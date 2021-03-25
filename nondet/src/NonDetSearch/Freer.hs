@@ -13,14 +13,12 @@ import Control.Monad.Freer
 import qualified Control.Monad.Freer.NonDet as F
 
 import NonDet.Class
-import Debug.Trace
+--import Debug.Trace
 
 {-----------------------------------------------------------------------------}
 -- Nondeterministic, visualizable search
 
-type ND effs = Member F.NonDet effs
-
-instance ND effs => NonDet (Eff effs) where
+instance Member F.NonDet effs => NonDet (Eff effs) where
     failure :: Eff effs a
     failure     = mzero
     choice :: Eff effs a -> Eff effs a -> Eff effs a

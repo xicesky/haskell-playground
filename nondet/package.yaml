@@ -31,8 +31,9 @@ dependencies:
 - transformers
 - lens
 - freer-simple
-- nondeterminism
 - fused-effects
+- polysemy
+- nondeterminism
 - logict
 
 default-extensions:
