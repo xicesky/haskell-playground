@@ -51,6 +51,13 @@ extra-deps:
 - github: polysemy-research/polysemy
   commit: ef154f996a18aa907166e3211170db08cfb56fed
 
+## lvish-1.1.4 hase base < 4.9, we are on base 4.14!
+#- lvish-1.1.4@sha256:bb376e7ac0598a623c8222824a2ace2649a395be610f81912eb7193450aa3e7e,9712
+## can't build lvish from github using stack (broken links)
+# - github: iu-parfunc/lvars
+#   commit: 78e73c96a929aa75aa4f991d42b2f677849e433a
+## i'm giving up at this point, i don't want to start maintainence work on this library.
+
 # Override default flag values for local packages and extra-deps
 # flags: {}
 

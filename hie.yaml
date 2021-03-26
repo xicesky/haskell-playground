@@ -21,11 +21,11 @@ cradle:
     - path: "oneoffs/src"
       component: "oneoffs:lib"
 
-    - path: "oneoffs/executable/Main.hs"
-      component: "oneoffs:exe:oneoffs"
+    - path: "oneoffs/executable/oneoff-concurrent-demo/Main.hs"
+      component: "oneoffs:exe:oneoff-concurrent-demo"
 
-    - path: "oneoffs/executable/Paths_oneoffs.hs"
-      component: "oneoffs:exe:oneoffs"
+    - path: "oneoffs/executable/oneoff-concurrent-demo/Paths_oneoffs.hs"
+      component: "oneoffs:exe:oneoff-concurrent-demo"
 
     - path: "oneoffs/test"
       component: "oneoffs:test:oneoffs-test"

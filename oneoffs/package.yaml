@@ -28,6 +28,7 @@ dependencies:
 - unordered-containers
 - mtl
 - transformers
+#- lvish  # broken
 # FIXME: create a common package
 - parsing
 
@@ -80,9 +81,9 @@ library:
     other-modules: Paths_pkg
 
 executables:
-  oneoffs:
+  oneoff-concurrent-demo:
     main:                Main.hs
-    source-dirs:         executable
+    source-dirs:         executable/oneoff-concurrent-demo
     ghc-options:
     - -threaded
     - -rtsopts
