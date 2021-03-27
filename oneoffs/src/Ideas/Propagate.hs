@@ -11,8 +11,6 @@ import Control.Applicative
 import Optics
 import Data.Tuple.Optics
 
-import Ideas.Lattice
-
 {-
 In general, a solveable problem has the form of a testable
 or minimizable property
@@ -97,14 +95,14 @@ replaced by @Maybe a@ or @Set a@ indicating determined or
 possible values.
 -}
 
-type ExampleProblemL = (L Int, L Int, L Int)
+type ExampleProblemL = (Maybe Int, Maybe Int, Maybe Int)
 
 -- Check the domain of all variables
-constraintDomainL :: [ExampleProblemL -> L ()]
+constraintDomainL :: [ExampleProblemL -> Maybe Bool]
 constraintDomainL = fmap check [_1, _2, _3] where
     -- Check the domain of variable at index @ix@
-    check :: Lens' s (L Int) -> s -> L ()
-    check ix prob = prob ^. ix & liftProp ok -- traversed %~ ok
+    check :: Lens' s (Maybe Int) -> s -> Maybe Bool
+    check ix prob = prob ^. ix & traversed %~ ok
         -- == over traversed ok (view ix prob)
         where
         ok :: Int -> Bool
@@ -113,10 +111,10 @@ constraintDomainL = fmap check [_1, _2, _3] where
 (<<) :: (Applicative f, Applicative g, Ord a) => f (g a) -> f (g a) -> f (g Bool)
 (<<) = liftA2 $ liftA2 (<)
 
-constraint01L :: ExampleProblemL -> L Bool
+constraint01L :: ExampleProblemL -> Maybe Bool
 constraint01L = (^. _1) << (^. _2)
     
-constraint02L :: ExampleProblemL -> L Bool
+constraint02L :: ExampleProblemL -> Maybe Bool
 constraint02L = (^. _2) << (^. _3)
 
 {-
