@@ -45,11 +45,13 @@ packages:
 #   commit: e7b331f14bcffb8367cd58fbfc8b40ec7642100a
 #
 extra-deps:
+- semilattices-0.0.0.4@sha256:333707e460923711d1edbdd02ebe1c3957d4e0808eab9886747b52ee3e443639,1909
 - fused-effects-1.1.1.0@sha256:6f5cf3f2d0d61f39d97b8f63bc96564d0f64bc2801f3da828572d9f99f1e79f4,5139
 # FIXME later: polysemy-1.4.0.0 on hackage doesn't work with current stackage
 #- polysemy-1.4.0.0@sha256:0245a046eaf936557d4208b5a355df1a20799c9e274f91fa889ab2644ecbabae,6541
 - github: polysemy-research/polysemy
   commit: ef154f996a18aa907166e3211170db08cfb56fed
+
 
 ## lvish-1.1.4 hase base < 4.9, we are on base 4.14!
 #- lvish-1.1.4@sha256:bb376e7ac0598a623c8222824a2ace2649a395be610f81912eb7193450aa3e7e,9712

@@ -28,6 +28,11 @@ dependencies:
 - unordered-containers
 - mtl
 - transformers
+- optics
+- optics-core
+- optics-extra
+- optics-th
+- semilattices
 #- lvish  # broken
 # FIXME: create a common package
 - parsing

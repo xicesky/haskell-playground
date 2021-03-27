@@ -25,11 +25,14 @@ source-repository head
 
 library
   exposed-modules:
+      Ideas.Lattice
+      Ideas.Lifted
       Ideas.Old.AnnotatedType
       Ideas.Old.ExtensibleADT
       Ideas.Old.FunctionMonoid
       Ideas.Old.ShowType
       Ideas.Old.TypeIso
+      Ideas.Propagate
   other-modules:
       Paths_oneoffs
   hs-source-dirs:
@@ -41,7 +44,12 @@ library
     , containers
     , hashable
     , mtl
+    , optics
+    , optics-core
+    , optics-extra
+    , optics-th
     , parsing
+    , semilattices
     , text
     , transformers
     , unordered-containers
@@ -63,7 +71,12 @@ executable oneoff-concurrent-demo
     , hashable
     , mtl
     , oneoffs
+    , optics
+    , optics-core
+    , optics-extra
+    , optics-th
     , parsing
+    , semilattices
     , text
     , transformers
     , unordered-containers
@@ -88,8 +101,13 @@ test-suite oneoffs-test
     , hspec
     , mtl
     , oneoffs
+    , optics
+    , optics-core
+    , optics-extra
+    , optics-th
     , parsing
     , quickcheck-instances
+    , semilattices
     , text
     , transformers
     , unordered-containers
@@ -113,7 +131,12 @@ benchmark oneoffs-benchmarks
     , hashable
     , mtl
     , oneoffs
+    , optics
+    , optics-core
+    , optics-extra
+    , optics-th
     , parsing
+    , semilattices
     , text
     , transformers
     , unordered-containers

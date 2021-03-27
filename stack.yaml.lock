@@ -5,6 +5,13 @@
 
 packages:
 - completed:
+    hackage: semilattices-0.0.0.4@sha256:333707e460923711d1edbdd02ebe1c3957d4e0808eab9886747b52ee3e443639,1909
+    pantry-tree:
+      size: 801
+      sha256: f3b6dd7ac1fa1b7a259334ff342405263da053af5c115bd86499227e2373d8ec
+  original:
+    hackage: semilattices-0.0.0.4@sha256:333707e460923711d1edbdd02ebe1c3957d4e0808eab9886747b52ee3e443639,1909
+- completed:
     hackage: fused-effects-1.1.1.0@sha256:6f5cf3f2d0d61f39d97b8f63bc96564d0f64bc2801f3da828572d9f99f1e79f4,5139
     pantry-tree:
       size: 6288
