@@ -36,6 +36,7 @@ dependencies:
 #- lvish  # broken
 # FIXME: create a common package
 - parsing
+- typelevel
 
 default-extensions:
 - ConstraintKinds

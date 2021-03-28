@@ -52,6 +52,7 @@ library
     , semilattices
     , text
     , transformers
+    , typelevel
     , unordered-containers
   if os(darwin)
     ghc-options: -optP-Wno-nonportable-include-path
@@ -79,6 +80,7 @@ executable oneoff-concurrent-demo
     , semilattices
     , text
     , transformers
+    , typelevel
     , unordered-containers
   if os(darwin)
     ghc-options: -optP-Wno-nonportable-include-path
@@ -110,6 +112,7 @@ test-suite oneoffs-test
     , semilattices
     , text
     , transformers
+    , typelevel
     , unordered-containers
   if os(darwin)
     ghc-options: -optP-Wno-nonportable-include-path
@@ -139,6 +142,7 @@ benchmark oneoffs-benchmarks
     , semilattices
     , text
     , transformers
+    , typelevel
     , unordered-containers
   if os(darwin)
     ghc-options: -optP-Wno-nonportable-include-path

@@ -12,18 +12,12 @@ import Optics
 import Data.Tuple.Optics
 
 {-
-In general, a solveable problem has the form of a testable
-or minimizable property
+In general, a solveable problem has the form of a testable property:
 -}
 type TestProblem a = a -> Bool
-type MinProblen a = a -> Double
 
 {-
-(From now on, we only care about testable problems, min problems
-should be solved another way...)
-
-You could, of course, just generate a until the test succeeds,
-or generate all a and find the minimum value for MinProblem.
+You could, of course, just generate a until the test succeeds.
 That's just "brute force" solving, and in general not feasible.
 
 Instead, we want to "break down" the problem into smaller parts
@@ -162,25 +156,57 @@ that allow us to:
         values
 
 And for constraints we need:
-    - the set of sub-domains that the constraint
-        operates on
+    - the set of sub-domains that the constraint operates on
     - a function to evaluate the constraint
         once all the variables are determined
+
+One difficulty is representing variables of different types.
+Say our problem has Boolean and Integer constraints like:
+    (x < y) && ((y < x) || (y == 0))
+
+Then we have variables x and y that range over @Int@ and also
+expressions (which we will represent by "anonymous" variables)
+of type @Bool@:
+    x               :: Int
+    y               :: Int
+    a0 = (y < x)    :: Bool
+    a1 = (y == 0)   :: Bool
+
+    (x < y)         :: Constraint
+    a0 || a1        :: Constraint
+
+How do we represent the variables in a way that doesn't
+erase their types during the runtime of the solver?
+
+The solver doesn't really care about the types of the variables,
+it only needs to know when variables are assigned (gain information)
+or conflict (which is also information gain).
+But to rebuild the (partial) solution, we'd like to be type-safe.
+For this purpose we can use heterogenous lists (see HList
+from the typelevel package).
+
+But since our problem consists of nothing else but variables
+and constraints, why not represent the whole problem like this
+in the first place?
 -}
 
--- data Set a
--- data Variable a
--- data Constraint
+data Set a
+data Variable a
+data Constraint
+data Problem
 
--- variablesOf :: Constraint -> Set (Variable x)
--- variablesOf = _
+decompose :: Problem -> Set (Variable x)
+decompose = undefined
 
 {-
 LessThan works on Ranges or Sets
 -}
 
--- lessThan :: Variable Int -> Variable Int -> Constraint
--- lessThan = _
+lessThan :: Variable Int -> Variable Int -> Constraint
+lessThan = undefined
+
+variablesOf :: Constraint -> Set (Variable x)
+variablesOf = undefined
 
 {-
 There is one big possible optimization: Constraints that have
@@ -192,6 +218,11 @@ We can then go on to check the other constraints for the
 newly determined variable. This is called propagation.
 
 But how do we represent that using a functional interface?
+E.g. For the constraint @x + y + z = 0@:
+    Int 
+    (x, Any) -> (x, -x)
+    (Any, y) -> (-y, y)
+
 We don't want to have functions for every possible "last
 missing variable"! Instead we can run such constraints
 directly on the semilattice variables, which requires that
@@ -202,8 +233,11 @@ constraints, so we need to compose them out of basic building
 blocks.
 
 Note (N1) for choice of lattice: Depending on the lattice
-you choose, propagation might not be possible. Let us just
-choose 
-
-
+you choose, propagation might not be possible. Choosing e.g.
+@Maybe Int@ for a "less than" constraint @x < y@, even if we
+determine one variable @y = 5@, we get @x < 5@, which we
+can't pin on any specific @x@. If we had chosen @Range Int@
+or @Set Int@ instead, we could have propagate some information!
 -}
+
+
