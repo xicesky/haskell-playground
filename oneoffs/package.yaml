@@ -28,6 +28,9 @@ dependencies:
 - unordered-containers
 - mtl
 - transformers
+- data-fix
+- recursion-schemes
+- indexed-profunctors
 - optics
 - optics-core
 - optics-extra
