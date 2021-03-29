@@ -35,6 +35,8 @@ import Data.Singletons.TH
 import Data.Singletons.Prelude
 --import Data.Singletons.Decide
 
+{-# ANN module "HLint: ignore Use foldr" #-}
+
 {--------------------------------------------------------------------------------------------------}
 -- Part 1: https://blog.jle.im/entry/introduction-to-singletons-1.html
 

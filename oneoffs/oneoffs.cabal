@@ -25,6 +25,8 @@ source-repository head
 
 library
   exposed-modules:
+      Ideas.DiffDS
+      Ideas.ELens
       Ideas.Lattice
       Ideas.Lifted
       Ideas.Old.AnnotatedType
@@ -33,6 +35,7 @@ library
       Ideas.Old.ShowType
       Ideas.Old.TypeIso
       Ideas.Propagate
+      Ideas.UpdateDS
   other-modules:
       Paths_oneoffs
   hs-source-dirs:
@@ -42,13 +45,16 @@ library
   build-depends:
       base >=4.7 && <5
     , containers
+    , data-fix
     , hashable
+    , indexed-profunctors
     , mtl
     , optics
     , optics-core
     , optics-extra
     , optics-th
     , parsing
+    , recursion-schemes
     , semilattices
     , text
     , transformers
@@ -69,7 +75,9 @@ executable oneoff-concurrent-demo
   build-depends:
       base >=4.7 && <5
     , containers
+    , data-fix
     , hashable
+    , indexed-profunctors
     , mtl
     , oneoffs
     , optics
@@ -77,6 +85,7 @@ executable oneoff-concurrent-demo
     , optics-extra
     , optics-th
     , parsing
+    , recursion-schemes
     , semilattices
     , text
     , transformers
@@ -99,8 +108,10 @@ test-suite oneoffs-test
       QuickCheck
     , base >=4.7 && <5
     , containers
+    , data-fix
     , hashable
     , hspec
+    , indexed-profunctors
     , mtl
     , oneoffs
     , optics
@@ -109,6 +120,7 @@ test-suite oneoffs-test
     , optics-th
     , parsing
     , quickcheck-instances
+    , recursion-schemes
     , semilattices
     , text
     , transformers
@@ -131,7 +143,9 @@ benchmark oneoffs-benchmarks
       base >=4.7 && <5
     , containers
     , criterion
+    , data-fix
     , hashable
+    , indexed-profunctors
     , mtl
     , oneoffs
     , optics
@@ -139,6 +153,7 @@ benchmark oneoffs-benchmarks
     , optics-extra
     , optics-th
     , parsing
+    , recursion-schemes
     , semilattices
     , text
     , transformers
