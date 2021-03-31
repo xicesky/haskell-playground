@@ -36,6 +36,7 @@ library
       Ideas.Old.TypeIso
       Ideas.Propagate
       Ideas.UpdateDS
+      Problems.HasCallStack
   other-modules:
       Paths_oneoffs
   hs-source-dirs:
