@@ -1,4 +1,5 @@
 
+{-# LANGUAGE AllowAmbiguousTypes #-}
 
 -- Compositional state monad without algebraic effects
 module Ideas.CompState where
@@ -43,6 +44,8 @@ class Factor s a where
     -- Or just a lens
     factor :: Lens' s a
 
+{--------------------------------------------------------------------------------------------------}
+
 -- Then, if we want to provide some functionality that requires some state:
 newtype Counter = CCounter { _counter :: Int }
     deriving (Show, Eq)
@@ -80,9 +83,15 @@ setStorage s = do
     assign (factor % storage) s
     return s0
 
+{--------------------------------------------------------------------------------------------------}
+
 {- And the disadvantages?
-No automatic impl, types errors can get out of hand sometimes, and
-we can't initialize the state via a simple "run" method.
+- No automatic impl
+- Type errors can get out of hand sometimes
+- We can't initialize the state via a simple "run" method
+- Nested states need more and more boilerplate declarations (see below)
+- Indexed state types require weird type applications (see below)
+    because they require AllowAmbiguousTypes or Proxies
 -}
 
 data MyState = CMyState
@@ -119,3 +128,57 @@ lensfulDemo = do
         return ()
 
 {--------------------------------------------------------------------------------------------------}
+-- Nested state boilerplate
+
+data MyNested1 = CMyNested1
+    { mn1Counter :: Counter
+    , mn1Other :: Int
+    }
+
+instance Factor MyNested1 Counter where
+    factor = lens mn1Counter (\s v -> s {mn1Counter=v})
+
+data MyNested2 = CMyNested2
+    { mn2Nested1 :: MyNested1
+    , mn2Other :: Int
+    }
+
+instance Factor MyNested2 MyNested1 where
+    factor = lens mn2Nested1 (\s v -> s {mn2Nested1=v})
+
+instance Factor MyNested2 Counter where
+    factor = factor % factor @MyNested1
+
+{--------------------------------------------------------------------------------------------------}
+-- Indexed state types are weird
+
+newtype IState n = CIState { _iState :: [n] }
+
+iState :: Iso' (IState n) [n]
+iState = iso (\ (CIState x) -> x) CIState
+{-# INLINE iState #-}
+
+countElems :: forall n s m. (MonadState s m, Factor s (IState n)) => m Int
+countElems = do
+    xs <- use $ factor @s @(IState n) % iState
+    return $ length xs
+
+data MyState3 n = CMyState3
+    { ms2Counter :: Counter
+    , ms2Storage :: IState n
+    }
+
+instance Factor (MyState3 n) Counter where
+    factor = lens ms2Counter (\s v -> s {ms2Counter=v})
+instance Factor (MyState3 n) (IState n) where
+    factor = lens ms2Storage (\s v -> s {ms2Storage=v})
+
+indexedStateDemo :: IO ()
+indexedStateDemo = do
+    _ <- runStateT demo $ CMyState3 (CCounter 0) (CIState ["a", "b", "c"])
+    return ()
+    where
+    demo :: StateT (MyState3 String) IO ()
+    demo = do
+        i <- countElems @String
+        liftIO $ print i
