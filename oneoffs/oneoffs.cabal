@@ -25,6 +25,7 @@ source-repository head
 
 library
   exposed-modules:
+      Ideas.CompState
       Ideas.DiffDS
       Ideas.ELens
       Ideas.Lattice
